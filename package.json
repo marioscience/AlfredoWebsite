@@ -1,0 +1,20 @@
+{
+  "name": "alfredowebsite",
+  "version": "1.0.0",
+  "description": "Alfredo Balcacer website application. Consists of a page with the content and a password protected backend page to make modifications to the data",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marioscience/alfredobalcacerwebsite.git"
+  },
+  "author": "Mario Matos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marioscience/alfredobalcacerwebsite/issues"
+  },
+  "homepage": "https://github.com/marioscience/alfredobalcacerwebsite#readme"
+}
