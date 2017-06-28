@@ -15,5 +15,11 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/marioscience/alfredowebsite/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.0",
+    "pug": "^2.0.0-rc.2"
   }
 }
