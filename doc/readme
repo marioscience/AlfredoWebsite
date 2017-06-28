@@ -1,0 +1,5 @@
+Write about dev and prod enviroments...
+
+- FILE HANDLING: File upload are handled as follows: 1. An entry is added in the database as text, this is the url of
+the folder under "public" and the filename. The "public" or "asset" is excluded from the URL to allow handling of the URL
+both in the front-end and back-end. Maybe the
