@@ -9,12 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marioscience/alfredobalcacerwebsite.git"
+    "url": "git+https://github.com/marioscience/alfredowebsite.git"
   },
   "author": "Mario Matos",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marioscience/alfredobalcacerwebsite/issues"
-  },
-  "homepage": "https://github.com/marioscience/alfredobalcacerwebsite#readme"
+    "url": "https://github.com/marioscience/alfredowebsite/issues"
+  }
 }
