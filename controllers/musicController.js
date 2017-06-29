@@ -52,6 +52,7 @@ module.exports = function(app) {
         });
     });
 
+    //Issue warning because it deletes children items
     app.delete("/api/music/song", function(req, res) {
         Music.findOneAndUpdate({}, {
             $pull: {
