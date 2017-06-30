@@ -1,13 +1,15 @@
+// Dependencies
 var express = require("express");
 var config = require("./config");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 
-//controllers
+// Controllers
 var setupData = require("./controllers/setupController");
 var musicController = require("./controllers/musicController");
 var transcriptionController = require("./controllers/transcriptionController");
 var biographyController = require("./controllers/biographyController");
+var clientController = require("./controllers/clientController");
 
 var app = express();
 
@@ -25,5 +27,6 @@ setupData(app);
 musicController(app);
 transcriptionController(app);
 biographyController(app);
+clientController(app);
 
 app.listen(port);
