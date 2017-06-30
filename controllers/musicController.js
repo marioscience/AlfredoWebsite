@@ -21,7 +21,7 @@ module.exports = function(app) {
         }, function(err) {
             if(err) throw err;
 
-            res.send("Video updated succesfully");
+            res.send("Video updated successfully.");
         });
     });
 
@@ -37,7 +37,7 @@ module.exports = function(app) {
                 if(err) throw err;
             });
 
-            res.send("Song added successfully!");
+            res.send("Song added successfully.");
         });
     });
 
@@ -48,7 +48,7 @@ module.exports = function(app) {
             "musicPlaylist.$.songUrl": req.body.songUrl
         }, function(err) {
             if(err) throw err;
-            res.send("Song updated successfully");
+            res.send("Song updated successfully.");
         });
     });
 
@@ -60,7 +60,7 @@ module.exports = function(app) {
             }
         },function(err) {
             if(err) throw err;
-            res.send("Song deleted successfully");
+            res.send("Song deleted successfully.");
         });
     });
 };

@@ -31,7 +31,7 @@ module.exports = function(app) {
                 if(err) throw err;
             });
 
-            res.send("Heading successfully added.");
+            res.send("Heading added successfully.");
         });
     });
 
@@ -60,13 +60,6 @@ module.exports = function(app) {
 
     /*Broken for now :( */
     app.put("/api/gear", function(req, res) {
-        // Biography.findOneAndUpdate({ "gear.items._id": req.body.id }, {
-        //         "gear.$.items": { "name": req.body.gearName }
-        // }, function(err) {
-        //     if(err) throw err;
-        //     res.send("Gear item modified successfully.");
-        // });
-
         Biography.findOne({ "gear.items._id": req.body.id }, function(err, biography) {
             if(err) throw err;
 

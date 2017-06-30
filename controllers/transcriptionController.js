@@ -13,7 +13,7 @@ module.exports = function(app) {
             $set: { description: req.body.description }
         }, function(err) {
             if(err) throw err;
-            res.send("Transcription description updated succesfully.");
+            res.send("Transcription description updated successfully.");
         })
     });
 
@@ -51,7 +51,7 @@ module.exports = function(app) {
             $pull: { "transcriptions": { "_id": req.body.id }}
         }, function(err) {
             if(err) throw err;
-            res.send("Transcription succesfully deleted.");
+            res.send("Transcription deleted successfully.");
         });
     });
 };
