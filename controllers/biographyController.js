@@ -38,10 +38,8 @@ module.exports = function(app) {
     // Adds a gear item under a specified gearType
     app.post("/api/gear", function(req, res) {
         Biography.findOneAndUpdate({ "gear.gearType": req.body.gearType }, {
-            "items": {
-                $push: {
-                    "name": req.body.gearName
-                }
+            $push: {
+                "gear.$.items": { "name": req.body.gearName }
             }
         }, function(err) {
             if(err) throw err;
@@ -52,7 +50,7 @@ module.exports = function(app) {
     app.put("/api/gear/type", function(req, res) {
         Biography.findOneAndUpdate({ "gear._id": req.body.id }, {
             $set: {
-                "gearType": req.body.gearType
+                "gear.$.gearType": req.body.gearType
             }
         }, function(err) {
             if(err) throw err;
@@ -60,20 +58,43 @@ module.exports = function(app) {
         });
     });
 
+    /*Broken for now :( */
     app.put("/api/gear", function(req, res) {
-        Biography.findOneAndUpdate({ "gear.items._id": req.body.id }, {
-            "name": req.body.gearName
-        }, function(err) {
-           if(err) throw err;
-           res.send("Gear item modified successfully.")
+        // Biography.findOneAndUpdate({ "gear.items._id": req.body.id }, {
+        //         "gear.$.items": { "name": req.body.gearName }
+        // }, function(err) {
+        //     if(err) throw err;
+        //     res.send("Gear item modified successfully.");
+        // });
+
+        Biography.findOne({ "gear.items._id": req.body.id }, function(err, biography) {
+            if(err) throw err;
+
+            // This is a nested for loop. which I normally try to avoid. But mongodb's support
+            // of nested array is limited and the gear section is not supposed to grow big, so this is a good solution.
+            biography.gear.forEach(function (heading) {
+                heading.items.forEach(function (gear) {
+                    if (gear._id.toString() === req.body.id) {
+                        gear.name = req.body.gearName;
+                    }
+                });
+            });
+
+            biography.save(function(err) {
+                if(err) throw err;
+                res.send("Gear item modified successfully.");
+            });
+
+
         });
-    });
+
+    });/**/
 
     // Issue warning because it deletes children items :D
-    app.delete("/api/gear/heading", function(req, res) {
+    app.delete("/api/gear/type", function(req, res) {
         Biography.findOneAndUpdate({}, {
             $pull: {
-                "gear._id": req.body.id
+                "gear" : { "_id": req.body.id }
             }
         }, function(err) {
             if(err) throw err;
@@ -82,13 +103,13 @@ module.exports = function(app) {
     });
 
     app.delete("/api/gear", function(req, res) {
-        Biography.findOneAndUpdate({ }, {
+        Biography.findOneAndUpdate({ "gear.items._id": req.body.id }, {
             $pull: {
-                "gear.items._id": req.body.id
+                "gear.$.items": { "_id": req.body.id }
             }
         }, function(err) {
             if(err) throw err;
-            res.send("Gear item successfully deleted.");
+            res.send("Gear item deleted successfully.");
         });
     });
 };
