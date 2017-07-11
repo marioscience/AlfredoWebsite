@@ -1,0 +1,34 @@
+How to add file support: https://stackoverflow.com/a/23843746/2829082
+
+restrict setupController to only run in development
+
+make sure errors are not leaked to user in production
+
+
+***** Folder Structure of this APP *****
+client: The source code for the client code will be kept here.
+        Then using gulp tasks the optimized code will be put in the public folder.
+config: App-wide configuration settings go here. Example: database credential management, app environment (dev, test, prod), etc.
+controllers: The routes, logic for the app and database access goes here.
+doc: Add supporting documents for the app.
+models: The Schema design for the data goes here. There's a file for each model.
+public: Everything that can be served to the client goes here. For example, optimized client code, assets, etc.
+client/views: The Pug views for creating the HTML for the app goes here.
+
+
+***** Long-Term Development *****
+- Create API (text only) [Done]
+- Create API Spec
+- Start front end and deploy. Deliver something.
+- Start backend interface.
+- Handle Authentication (Use Passport.js)
+- Handle File Uploads (Use busboy)
+- Add Testing (for practice. Use Karma/Jasmine)
+
+
+***** Tech Stack *****
+Front-End:
+    - Webpack: for module loading, bundling and optimizing
+    - npm: for package management
+    - ?: looking for a nice styling framework. preferably based on material and similar to bootstrap
+    - ?: Front-End javaScript framework. Probably Angular, but could be AngularJS because I'm used to that but vue.js and React.js are also good candidates.
