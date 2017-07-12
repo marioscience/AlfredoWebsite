@@ -34,7 +34,7 @@ Front-End:
     - ?: Front-End javaScript framework. Probably Angular, but could be AngularJS because I'm used to that but vue.js and React.js are also good candidates.
 
 
-- Start calling the home section introduction, that way it won't clash with the parent home page.
+- Start calling the introduction section introduction, that way it won't clash with the parent introduction page.
     This might be a good chance to introduce e2e tests. or just test the APIs. I tried to refactor this and just realized
     I would have to go do a whole test of the API and a reset of the database data to refactor.
     Also, this is a good chace to put API URLs in a central place (no magic strings) that way changing the API endpoint URL would

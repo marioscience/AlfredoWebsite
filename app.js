@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 
 // Controllers
 var setupData = require("./controllers/setupController");
+var introductionController = require("./controllers/introductionController");
 var musicController = require("./controllers/musicController");
 var transcriptionController = require("./controllers/transcriptionController");
 var biographyController = require("./controllers/biographyController");
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 
 mongoose.connect(config.getDBConnectionString(appEnv));
 setupData(app);
+introductionController(app);
 musicController(app);
 transcriptionController(app);
 biographyController(app);

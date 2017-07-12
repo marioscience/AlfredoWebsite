@@ -2,7 +2,7 @@
 /* It is restricted to run only on the dev environment */
 var mongoose = require("mongoose");
 
-var Home = require("../models/homeModel");
+var Introduction = require("../models/introductionModel");
 var Music = require("../models/musicModel");
 var Transcription = require("../models/transcriptionModel");
 var Biography = require("../models/biographyModel");
@@ -10,10 +10,10 @@ var Biography = require("../models/biographyModel");
 // For now this is dummy data. Later it will have the actual initial data for the site
 
 var seedData = {
-    home: {
+    introduction: {
         title: "Alfredo Balcacer",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum blandit risus non posuere",
-        homePicUrl: "/images/homepic.jpg"
+        introductionPicUrl: "/images/introductionpic.jpg"
     },
     music: {
         videoUrl: "/videos/musicVideo.mp4",
@@ -90,10 +90,10 @@ module.exports = function(app) {
 
     app.get("/api/appSetup", function(req, res) {
         /* Add seed data */
-        Home.create({
-            title: seedData.home.title,
-            description: seedData.home.description,
-            homePicUrl: seedData.home.homePicUrl
+        Introduction.create({
+            title: seedData.introduction.title,
+            description: seedData.introduction.description,
+            introductionPicUrl: seedData.introduction.introductionPicUrl
         }, logResult);
 
         Music.create({
