@@ -3,7 +3,6 @@ var Music = require("../models/musicModel");
 module.exports = function(app) {
     app.get("/api/music/playlist", function(req, res) {
         Music.findOne({}, function(err, result) {
-            console.log(result.musicPlaylist);
             res.send(result.musicPlaylist);
         });
     });
