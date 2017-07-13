@@ -40,3 +40,5 @@ Front-End:
     Also, this is a good chace to put API URLs in a central place (no magic strings) that way changing the API endpoint URL would
     change it everywhere without messing things up
     I don't really have time for this because I want to make some progress on the frontend
+
+- GearType instances could be called gear categories. Another opportunity to add and test testing
