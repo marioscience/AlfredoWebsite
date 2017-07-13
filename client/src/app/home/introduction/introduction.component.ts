@@ -4,11 +4,7 @@ import {Introduction} from "../../models/introduction.model";
 
 @Component({
   selector: "introduction-section",
-  //language=Angular2HTML
-  template: `
-    <h1> This is the home section. put something here come on man</h1>
-    Intro: {{ introduction }}
-  `
+  templateUrl: "./introduction.component.html"
 })
 export class IntroductionComponent implements OnInit {
   introduction = new Introduction();

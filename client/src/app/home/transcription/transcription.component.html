@@ -1,0 +1,11 @@
+<h1> This is the transcription. put something here come on man</h1>
+<h2>Transcriptions</h2>
+<p>{{ transcription.description }}</p>
+<div>
+  <div style="border: 2px solid black" *ngFor="let transcriptionItem of transcription.transcriptions">
+    <h2>{{ transcriptionItem.title }}</h2>
+    <p>video: {{ transcriptionItem.videoUrl }}</p>
+    <p>{{ transcriptionItem.description }}</p>
+    <p style="text-decoration: underline">{{ transcriptionItem.pdfUrl }}</p>
+  </div>
+</div>
