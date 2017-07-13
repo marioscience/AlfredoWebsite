@@ -1,7 +1,6 @@
-import {Component} from "@angular/core";
-import {Introduction} from "../../models/introduction.model";
+import {Component, OnInit} from "@angular/core";
 import {IntroductionService} from "../../services/introduction.service";
-import {OnInit} from "@angular/core";
+import {Introduction} from "../../models/introduction.model";
 
 @Component({
   selector: "introduction-section",
@@ -12,7 +11,7 @@ import {OnInit} from "@angular/core";
   `
 })
 export class IntroductionComponent implements OnInit {
-  introduction: Introduction;
+  introduction = new Introduction();
 
   constructor(private introductionService: IntroductionService) {
   }
