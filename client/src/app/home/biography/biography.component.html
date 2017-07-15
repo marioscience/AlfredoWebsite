@@ -1,6 +1,5 @@
-<h1> This is the biography. put something here come on man</h1>
 <div>
-  <p>Hello! {{ biography.biographyText }}</p>
+  <p>{{ biography.biographyText }}</p>
   <p>Pic: {{ biography.picUrl }}</p>
   <div *ngFor="let gearHeading of biography.gear">
     <h3>{{ gearHeading.gearType }}</h3>
