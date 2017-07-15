@@ -4,6 +4,8 @@ restrict setupController to only run in development
 
 make sure errors are not leaked to user in production
 
+remember to add actual font files...
+
 
 ***** Folder Structure of this APP *****
 client: The source code for the client code will be kept here.
