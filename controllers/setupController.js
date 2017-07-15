@@ -16,17 +16,17 @@ var seedData = {
         introductionPicUrl: "/images/introductionpic.jpg"
     },
     music: {
-        videoUrl: "/videos/musicVideo.mp4",
+        videoUrl: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4",
         musicPlaylist: [
             {
                 songName: "Something Special",
                 artist: "Alfredo Balcacer",
-                songUrl: "/audio/song1.mp3"
+                songUrl: "/music/its-taking-too-long.mp3"
             },
             {
                 songName: "No More Love For Women",
                 artist: "Alfredo Balcacer",
-                songUrl: "/audio/song2.mp3"
+                songUrl: "/music/un-jardin-en-el-espacio.mp3"
             }
         ]
     },
