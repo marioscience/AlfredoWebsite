@@ -1,0 +1,11 @@
+/* View Encapsulation for this component is disabled. To allow for styles from Angular Material to apply for the component
+and to prevent styles here from contaminating other parts of the app write all styles under the introduction-container wrapper class
+ Update: Didn't need to disable component encapsulation, but will keep comment in case I need to use this pattern later */
+
+.introduction-container {
+  /*border: 1px solid deeppink;*/
+  background-image: url("/images/home-main.jpg");
+  background-size: cover;
+  padding: 15% 20%;
+  text-align: center;
+}

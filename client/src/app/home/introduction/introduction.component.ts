@@ -4,7 +4,9 @@ import {Introduction} from "../../models/introduction.model";
 
 @Component({
   selector: "introduction-section",
-  templateUrl: "./introduction.component.html"
+  templateUrl: "./introduction.component.html",
+  styleUrls: ["./introduction.component.scss"]
+
 })
 export class IntroductionComponent implements OnInit {
   introduction = new Introduction();

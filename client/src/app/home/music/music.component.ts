@@ -4,7 +4,8 @@ import {Music} from "../../models/music.model";
 
 @Component({
   selector: "music-section",
-  templateUrl: "./music.component.html"
+  templateUrl: "./music.component.html",
+  styleUrls: ["./music.component.scss"]
 })
 export class MusicComponent implements OnInit {
   music = new Music();

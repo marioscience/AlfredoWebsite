@@ -1,5 +1,7 @@
-<div>
-  <p>Video link: {{ music.videoUrl }}</p>
+<div class="music-container">
+  <h1 class="mat-h1">Music</h1>
+  <!--<p>Video link: {{ music.videoUrl }}</p>-->
+  <video class="video-stream html5-main-video" controls src="{{ music.videoUrl }}"></video>
   <div *ngFor="let song of music.musicPlaylist">
     <h2>{{ song.artist }}</h2>
     <h1>{{ song.songName }}</h1>
