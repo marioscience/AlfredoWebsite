@@ -7,18 +7,19 @@
     {
       "root": "src",
       "outDir": "../public/build",
-      "deployUrl": "build",
       "assets": [
         "assets",
         "favicon.ico"
       ],
+      "deployUrl": "build",
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "tsconfig": "tsconfig.app.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "mat-app-theme.scss",
+        "main.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -40,7 +41,8 @@
     }
   ],
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }

@@ -8,7 +8,17 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MdIconModule, MdSidenavModule, MdTabsModule, MdButtonModule, MdCheckboxModule} from "@angular/material";
+import {
+  MdIconModule,
+  MdSidenavModule,
+  MdTabsModule,
+  MdButtonModule,
+  MdCheckboxModule,
+  MdMenuModule,
+  MdToolbarModule,
+  MdCardModule
+} from "@angular/material";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 // There's a built in MaterialModule in Angular Material. But I think that it loads all the modules at once.
 // Check to see if they are lazy loaded and if it is actually ok to use that module instead of this one
@@ -20,7 +30,11 @@ import {MdIconModule, MdSidenavModule, MdTabsModule, MdButtonModule, MdCheckboxM
     MdTabsModule,
     MdButtonModule,
     MdCheckboxModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdMenuModule,
+    MdToolbarModule,
+    MdCardModule,
+    FlexLayoutModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +43,11 @@ import {MdIconModule, MdSidenavModule, MdTabsModule, MdButtonModule, MdCheckboxM
     MdTabsModule,
     MdButtonModule,
     MdCheckboxModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdMenuModule,
+    MdToolbarModule,
+    MdCardModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule {

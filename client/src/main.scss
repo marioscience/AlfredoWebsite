@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: Martel, "Palatino Linotype", Palatino, serif;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar .mat-toolbar-row {
+  align-items: stretch;
+}

@@ -3,6 +3,10 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
 import {MaterialModule} from "../core/material.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
+
+import {NavbarComponent} from "./navbar/navbar.component";
+import {FooterComponent} from "./footer/footer.component";
 
 import {IntroductionComponent} from "./introduction/introduction.component";
 import {MusicComponent} from "./music/music.component";
@@ -15,12 +19,15 @@ import {FormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports: [
     HomeComponent,
   ],
   declarations: [
+    NavbarComponent,
+    FooterComponent,
     HomeComponent,
     IntroductionComponent,
     MusicComponent,
