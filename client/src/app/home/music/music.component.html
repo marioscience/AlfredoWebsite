@@ -1,10 +1,14 @@
 <div class="music-container">
-  <h1 class="mat-h1">Music</h1>
-  <!--<p>Video link: {{ music.videoUrl }}</p>-->
-  <video class="video-stream html5-main-video" controls src="{{ music.videoUrl }}"></video>
-  <div *ngFor="let song of music.musicPlaylist">
-    <h2>{{ song.artist }}</h2>
-    <h1>{{ song.songName }}</h1>
-    <h3>{{ song.songUrl }}</h3>
+  <h1 class="mat-h1 section-title">Music</h1>
+  <div fxLayout fxLayoutGap.gt-sm="30px" style="border: 1px solid pink">
+    <video-player [src]="music.videoUrl" fxFlex="70" fxFlexOffset.gt-sm="30px"
+                  style="border: 1px solid deepskyblue"></video-player>
+    <div fxFlex="30" style="border: 1px solid deepskyblue">
+      <div *ngFor="let song of music.musicPlaylist">
+        <h2>{{ song.artist }}</h2>
+        <h1>{{ song.songName }}</h1>
+        <h3>{{ song.songUrl }}</h3>
+      </div>
+    </div>
   </div>
 </div>

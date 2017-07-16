@@ -1,9 +1,9 @@
 <div>
-  <div class="mat-h1">Biography</div>
+  <div class="mat-h1 section-title">Biography</div>
   <p>{{ biography.biographyText }}</p>
   <p>Pic: {{ biography.picUrl }}</p>
 
-  <div class="mat-h1">Gear</div>
+  <div class="mat-h1 section-title">Gear</div>
   <div *ngFor="let gearHeading of biography.gear">
     <h3>{{ gearHeading.gearType }}</h3>
     <ul>
