@@ -2,6 +2,8 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
+import {FrameworkModule} from "../framework/framework.module";
+
 import {MaterialModule} from "../core/material.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
@@ -20,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     CommonModule,
     FormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FrameworkModule
   ],
   exports: [
     HomeComponent,
