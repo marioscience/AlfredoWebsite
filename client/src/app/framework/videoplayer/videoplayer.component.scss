@@ -1,0 +1,6 @@
+.playback-controls {
+  background-color: rgb(33, 33, 33); // Extract from theme: https://material.angular.io/guide/theming-your-components
+  .mat-progress-bar {
+    height: initial;
+  }
+}
