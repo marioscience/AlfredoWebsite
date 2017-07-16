@@ -11,12 +11,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MdIconModule,
   MdSidenavModule,
-  MdTabsModule,
   MdButtonModule,
-  MdCheckboxModule,
-  MdMenuModule,
   MdToolbarModule,
-  MdCardModule
+  MdCardModule,
+  MdSliderModule,
+  MdProgressBarModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
@@ -27,26 +26,24 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     CommonModule,
     BrowserAnimationsModule,
     MdIconModule,
-    MdTabsModule,
     MdButtonModule,
-    MdCheckboxModule,
     MdSidenavModule,
-    MdMenuModule,
     MdToolbarModule,
     MdCardModule,
+    MdSliderModule,
+    MdProgressBarModule,
     FlexLayoutModule
   ],
   exports: [
     CommonModule,
     BrowserAnimationsModule,
     MdIconModule,
-    MdTabsModule,
     MdButtonModule,
-    MdCheckboxModule,
     MdSidenavModule,
-    MdMenuModule,
     MdToolbarModule,
     MdCardModule,
+    MdSliderModule,
+    MdProgressBarModule,
     FlexLayoutModule
   ]
 })
