@@ -22,20 +22,22 @@ import {DOCUMENT} from "@angular/common";
 export class VideoPlayerComponent implements OnInit {
   @Input() src: string;
   @ViewChild("videoElement") videoView: ElementRef;
+  @ViewChild("videoContainer") containerView: ElementRef;
   videoElement: any;
+  videoContainer: any;
   isPaused: boolean;
   volume: number;
   progressPercent: number;
   isFullscreenEnabled: boolean;
 
-  constructor(private elemRef: ElementRef,
-              private renderer: Renderer2,
+  constructor(private renderer: Renderer2,
               @Inject(DOCUMENT) private document: Document) {
   }
 
   ngOnInit(): void {
     // Get native element to use in class
     this.videoElement = this.videoView.nativeElement;
+    this.videoContainer = this.containerView.nativeElement;
     // Set initial values to component from native element
     this.isPaused = this.videoElement.paused;
     this.volume = this.videoElement.volume;
@@ -74,10 +76,10 @@ export class VideoPlayerComponent implements OnInit {
       else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
       else if ((<any>document).msExitFullscreen) (<any>document).msExitFullscreen();
     } else {
-      if (this.elemRef.nativeElement.requestFullscreen) this.elemRef.nativeElement.requestFullscreen();
-      else if (this.elemRef.nativeElement.mozRequestFullScreen) this.elemRef.nativeElement.mozRequestFullScreen();
-      else if (this.elemRef.nativeElement.webkitRequestFullScreen) this.elemRef.nativeElement.webkitRequestFullScreen();
-      else if (this.elemRef.nativeElement.msRequestFullscreen) this.elemRef.nativeElement.msRequestFullscreen();
+      if (this.videoContainer.requestFullscreen) this.videoContainer.requestFullscreen();
+      else if (this.videoContainer.mozRequestFullScreen) this.videoContainer.mozRequestFullScreen();
+      else if (this.videoContainer.webkitRequestFullScreen) this.videoContainer.webkitRequestFullScreen();
+      else if (this.videoContainer.msRequestFullscreen) this.videoContainer.msRequestFullscreen();
     }
   }
 
