@@ -2,14 +2,13 @@ body {
   margin: 0;
 }
 
-.example-spacer { // This belongs to navbar
-  flex: 1 1 auto;
-}
-
-.mat-toolbar .mat-toolbar-row {
-  align-items: stretch;
-}
-
+// All section titles are centered
 .section-title {
   text-align: center;
+}
+
+/* v this really belongs in the navbar component but material api doesn't allow for easy styling of components */
+/* Angular Material is in beta so I'm allowed to do this. yay! */
+.mat-toolbar .mat-toolbar-row {
+  align-items: stretch !important;
 }

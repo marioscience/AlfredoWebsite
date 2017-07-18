@@ -44,3 +44,12 @@ Front-End:
     I don't really have time for this because I want to make some progress on the frontend
 
 - GearType instances could be called gear categories. Another opportunity to add and test testing
+
+- Under the music section, the elements in the playlist array should be of type Song.
+
+- In the video on the music section. Make the video controls disappear and come back on hover, use a timer.
+    Add fade transition when dissapearing. Also add click video area to play/pause and big play button on the center when paused.
+    Add functionality so that when prev button is pressed the current track gets rewined. use https://github.com/goldfire/howler.js#seekseek-id
+    When a song ends. pause the player.
+
+- find converter library (NPM) to convert uploaded video and audio files to browser compatible multiple files.
