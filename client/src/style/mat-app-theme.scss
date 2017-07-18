@@ -1,19 +1,6 @@
-@import '~@angular/material/theming';
+@import "variables";
 
 @include mat-core();
-
-/* Color Palette */
-$black: #000000;
-$white: #FFFFFF;
-
-$app-primary: mat-palette($mat-grey, 900, 800, 700);
-$app-accent: mat-palette($mat-blue-grey);
-
-$app-warn: mat-palette($mat-red);
-
-/* Typography */
-$font-family-primary: "Martel, 'Palatino Linotype', Palatino, serif";
-$font-family-secondary: "'Open Sans', Helvetica, Arial, sans-serif";
 
 $custom-typography-primary: mat-typography-config(
   $font-family: $font-family-primary,

@@ -1,14 +1,25 @@
+@import "variables";
+
 body {
   margin: 0;
+}
+
+.section-container {
+  padding: 0 30px;
 }
 
 // All section titles are centered
 .section-title {
   text-align: center;
+  padding-top: 45px;
+  line-height: 1;
 }
 
 /* v this really belongs in the navbar component but material api doesn't allow for easy styling of components */
 /* Angular Material is in beta so I'm allowed to do this. yay! */
-.mat-toolbar .mat-toolbar-row {
-  align-items: stretch !important;
+.mat-toolbar {
+  padding: 0 $container-margin !important;
+  .mat-toolbar-row {
+    align-items: stretch !important;
+  }
 }
