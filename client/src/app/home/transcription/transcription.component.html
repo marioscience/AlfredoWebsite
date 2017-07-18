@@ -1,25 +1,16 @@
-<div>
+<div fxLayout="column" fxLayoutAlign="start center">
   <h1 class="mat-h1 section-title">Transcriptions</h1>
-  <p>{{ transcription.description }}</p>
-  <div fxFlexLayout="row" fxLayoutGap.gt-md="30px">
-    <!--<div style="border: 2px solid black" *ngFor="let transcriptionItem of transcription.transcriptions">-->
-    <!--<h2>{{ transcriptionItem.title }}</h2>-->
-    <!--<p>video: {{ transcriptionItem.videoUrl }}</p>-->
-    <!--<p>{{ transcriptionItem.description }}</p>-->
-    <!--<p style="text-decoration: underline">{{ transcriptionItem.pdfUrl }}</p>-->
-    <!--</div>-->
-    <md-card color="primary" fxFlex="25" *ngFor="let transcriptionItem of transcription.transcriptions">
-      <md-card-header>
-        <md-card-title>{{ transcriptionItem.title }}</md-card-title>
-      </md-card-header>
-      <img md-card-image src="https://cdn2.macworld.co.uk/cmsdata/features/3236365/vimeox380.jpg">
-      <md-card-content>
-        <p>{{ transcriptionItem.description }}</p>
-      </md-card-content>
-      <md-card-actions>
-        <button md-button>Download [{{ transcriptionItem.pdfUrl }}]</button>
-      </md-card-actions>
-    </md-card>
-
+  <p class="mat-body-1">{{ transcription.description }}</p>
+  <div fxFlexLayout="column" fxLayoutGap="90px">
+    <div color="primary" fxLayout fxLayoutGap="30px" *ngFor="let transcriptionItem of transcription.transcriptions">
+      <div>
+        <img src="https://cdn2.macworld.co.uk/cmsdata/features/3236365/vimeox380.jpg">
+      </div>
+      <div>
+        <h1 class="mat-h1">{{ transcriptionItem.title }}</h1>
+        <p class="mat-body-1">{{ transcriptionItem.description }}</p>
+        <a class="mat-body-1">Download [{{ transcriptionItem.pdfUrl }}]</a>
+      </div>
+    </div>
   </div>
 </div>
