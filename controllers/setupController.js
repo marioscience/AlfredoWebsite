@@ -73,7 +73,7 @@ var seedData = {
         "the Dominican Republic, he shared stage and recorded with Los Hermanos Rosario, Vakero, Javier Vargas, Cuquito Moré,\n" +
         "Otoniel Nicolas, Guy Frometa, Juan Francisco Ordóñez, Josean Jacobo, Esar Simo, Los Rayo Solares, Diego Mena, El Metro, and\n" +
         "many, many others.",
-        picUrl: "/images/biograpypic.jpg",
+        picUrl: "/images/bio-main.jpg",
         gear: [
             {
                 gearType: "Guitars",
@@ -139,7 +139,6 @@ var seedData = {
 // I guess you need to put a file manually for things requiring files. Maybe there's a way to automate this as well, but
 // for now we'll just seed the path to mongo and render the file that was put manually in public from there.
 
-/* TODO: v ADD FOR LOOPS FOR OBJECTS. YOUR A PROGRAMMER FOR CHRIST SAKES! v */
 module.exports = function(app) {
 
     var logResult = function(err, result) {
