@@ -1,9 +1,9 @@
 export class Music {
   videoUrl: string;
-  musicPlaylist: Playlist[];
+  musicPlaylist: Song[];
 }
 
-export class Playlist {
+export class Song {
   songName: string;
   artist: string;
   songUrl: string;

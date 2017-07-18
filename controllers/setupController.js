@@ -27,6 +27,16 @@ var seedData = {
                 songName: "No More Love For Women",
                 artist: "Alfredo Balcacer",
                 songUrl: "/music/un-jardin-en-el-espacio.mp3"
+            },
+            {
+                songName: "Tales of the Horseback Rider",
+                artist: "Alfredo Balcacer",
+                songUrl: "/music/tales-of-the-horseback-rider.mp3"
+            },
+            {
+                songName: "Track One Wav",
+                artist: "Alfredo Balcacer",
+                songUrl: "/music/track-one.wav"
             }
         ]
     },
@@ -108,6 +118,16 @@ module.exports = function(app) {
                     songName: seedData.music.musicPlaylist[1].songName,
                     artist: seedData.music.musicPlaylist[1].artist,
                     songUrl: seedData.music.musicPlaylist[1].songUrl
+                },
+                {
+                    songName: seedData.music.musicPlaylist[2].songName,
+                    artist: seedData.music.musicPlaylist[2].artist,
+                    songUrl: seedData.music.musicPlaylist[2].songUrl
+                },
+                {
+                    songName: seedData.music.musicPlaylist[3].songName,
+                    artist: seedData.music.musicPlaylist[3].artist,
+                    songUrl: seedData.music.musicPlaylist[3].songUrl
                 }
             ]
         }, logResult);
