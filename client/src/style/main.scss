@@ -15,8 +15,8 @@ body {
   line-height: 1;
 }
 
-/* v this really belongs in the navbar component but material api doesn't allow for easy styling of components */
-/* Angular Material is in beta so I'm allowed to do this. yay! */
+/* v this really belongs in the navbar component but material api doesn't allow for easy styling of components
+  Angular Material is in beta so I'm allowed to do this. yay! */
 .mat-toolbar {
   padding: 0 $container-margin !important;
   .mat-toolbar-row {
