@@ -25,3 +25,8 @@ Angular Material is in beta so I'm allowed to do this. yay! */
     align-items: stretch !important;
   }
 }
+
+.transcription-section,
+.biography-section {
+  max-width: 960px; //!important; // angular/flexbox is using this in the element
+}
