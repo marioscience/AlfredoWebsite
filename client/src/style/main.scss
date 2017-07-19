@@ -4,8 +4,10 @@ body {
   margin: 0;
 }
 
-.section-container {
-  padding: 0 30px;
+@media screen and (min-width: $xsBreakPoint) {
+  .section-container {
+    padding: 0 30px;
+  }
 }
 
 // All section titles are centered
@@ -16,7 +18,7 @@ body {
 }
 
 /* v this really belongs in the navbar component but material api doesn't allow for easy styling of components
-  Angular Material is in beta so I'm allowed to do this. yay! */
+Angular Material is in beta so I'm allowed to do this. yay! */
 .mat-toolbar {
   padding: 0 $container-margin !important;
   .mat-toolbar-row {
