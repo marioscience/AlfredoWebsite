@@ -14,6 +14,7 @@ import {IntroductionComponent} from "./introduction/introduction.component";
 import {MusicComponent} from "./music/music.component";
 import {BiographyComponent} from "./biography/biography.component";
 import {TranscriptionComponent} from "./transcription/transcription.component";
+import {TranscriptionItemComponent} from "./transcription/transcription-item.component";
 import {HomeComponent} from "./home.component";
 import {FormsModule} from "@angular/forms";
 
@@ -35,7 +36,8 @@ import {FormsModule} from "@angular/forms";
     IntroductionComponent,
     MusicComponent,
     BiographyComponent,
-    TranscriptionComponent
+    TranscriptionComponent,
+    TranscriptionItemComponent
   ]
 })
 export class HomeModule {
