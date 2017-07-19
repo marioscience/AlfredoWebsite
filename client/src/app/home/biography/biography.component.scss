@@ -1,0 +1,30 @@
+@import "../../../style/variables";
+
+.biography-image {
+  width: 100%;
+}
+
+.gear-list-item li {
+  list-style-type: none;
+  padding-bottom: 10px;
+}
+
+.gear-section {
+  column-count: 3;
+  width: 90%;
+  .gear-list {
+    break-inside: avoid;
+  }
+}
+
+@media screen and (max-width: $smBreakPoint) {
+  .gear-section {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: $xsBreakPoint) {
+  .gear-section {
+    column-count: 1;
+  }
+}

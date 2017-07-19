@@ -1,13 +1,16 @@
-<div>
+<div class="biography-section section-container">
   <div class="mat-h1 section-title">Biography</div>
-  <p>{{ biography.biographyText }}</p>
-  <p>Pic: {{ biography.picUrl }}</p>
 
-  <div class="mat-h1 section-title">Gear</div>
-  <div *ngFor="let gearHeading of biography.gear">
-    <h3>{{ gearHeading.gearType }}</h3>
-    <ul>
-      <li *ngFor="let gear of gearHeading.items">{{ gear.name }}</li>
-    </ul>
+  <img class="biography-image" src="{{biography.picUrl}}" alt="alfredo playing on stage">
+  <p class="mat-body-1">{{ biography.biographyText }}</p>
+
+  <h1 class="mat-h1 section-title">Gear</h1>
+  <div class="gear-section">
+    <div class="gear-list" *ngFor="let gearHeading of biography.gear">
+      <h3 class="mat-subheading-1">{{ gearHeading.gearType }}</h3>
+      <ul class="gear-list-item">
+        <li class="mat-body-1" *ngFor="let gear of gearHeading.items">{{ gear.name }}</li>
+      </ul>
+    </div>
   </div>
 </div>

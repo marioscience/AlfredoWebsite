@@ -4,7 +4,8 @@ import {BiographyService} from "../../services/biography.service";
 
 @Component({
   selector: "biography-section",
-  templateUrl: "./biography.component.html"
+  templateUrl: "./biography.component.html",
+  styleUrls: ["./biography.component.scss"]
 })
 export class BiographyComponent implements OnInit {
   constructor(private biographyService: BiographyService) {
