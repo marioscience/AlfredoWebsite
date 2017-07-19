@@ -73,7 +73,7 @@ var seedData = {
         "the Dominican Republic, he shared stage and recorded with Los Hermanos Rosario, Vakero, Javier Vargas, Cuquito Moré,\n" +
         "Otoniel Nicolas, Guy Frometa, Juan Francisco Ordóñez, Josean Jacobo, Esar Simo, Los Rayo Solares, Diego Mena, El Metro, and\n" +
         "many, many others.",
-        picUrl: "/images/bio-main.jpg",
+        picUrl: "images/bio-main.jpg",
         gear: [
             {
                 gearType: "Guitars",
