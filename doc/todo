@@ -53,3 +53,11 @@ Front-End:
     When a song ends. pause the player.
 
 - find converter library (NPM) to convert uploaded video and audio files to browser compatible multiple files.
+
+- Add the background image of Introduction as a field to the database. that way it can be changed.
+
+- Find a way to have a central file with variables for gutter, container padding, etc that can be used both in
+main.scss and in flex-layout directives. That means having a place for these variables and if I change one the value is reflected
+everywhere.
+
+- make cursor change on audioplayer items to let the user know they're clickable
