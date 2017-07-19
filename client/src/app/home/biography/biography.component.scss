@@ -11,7 +11,7 @@
 
 .gear-section {
   column-count: 3;
-  width: 90%;
+  width: 90%; //because of design spec
   .gear-list {
     break-inside: avoid;
   }
@@ -19,12 +19,14 @@
 
 @media screen and (max-width: $smBreakPoint) {
   .gear-section {
+    width: 100%;
     column-count: 2;
   }
 }
 
 @media screen and (max-width: $xsBreakPoint) {
   .gear-section {
+    width: 100%;
     column-count: 1;
   }
 }
