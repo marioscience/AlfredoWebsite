@@ -16,6 +16,7 @@ import {
   MdCardModule,
   MdSliderModule,
   MdListModule,
+  MdMenuModule,
   MdProgressBarModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -34,6 +35,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MdSliderModule,
     MdProgressBarModule,
     MdListModule,
+    MdMenuModule,
     FlexLayoutModule
   ],
   exports: [
@@ -47,6 +49,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MdSliderModule,
     MdProgressBarModule,
     MdListModule,
+    MdMenuModule,
     FlexLayoutModule
   ]
 })
