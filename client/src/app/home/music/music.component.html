@@ -1,11 +1,10 @@
-<div class="music-container">
+<div class="music-container section-container">
   <h1 class="mat-h1 section-title">Music</h1>
-  <div fxLayout fxFlexOffset="30px" fxLayoutGap.gt-sm="30px">
+  <div fxLayout fxLayoutGap.gt-sm="30px">
     <video-player [src]="music.videoUrl"
-                  fxFlex="70"
-                  fxFlexOffset.gt-sm="30px">
+                  fxFlex="70">
     </video-player>
-    <md-card>
+    <md-card fxFlex="30">
       <audio-player *ngIf="music.musicPlaylist" [playList]="music.musicPlaylist"></audio-player>
     </md-card>
   </div>

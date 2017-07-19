@@ -1,16 +1,10 @@
-<div fxLayout="column" fxLayoutAlign="start center">
+<div class="transcription-section section-container" fxLayout="column" fxLayoutAlign="start center">
   <h1 class="mat-h1 section-title">Transcriptions</h1>
   <p class="mat-body-1">{{ transcription.description }}</p>
-  <div fxFlexLayout="column" fxLayoutGap="90px">
-    <div color="primary" fxLayout fxLayoutGap="30px" *ngFor="let transcriptionItem of transcription.transcriptions">
-      <div>
-        <img src="https://cdn2.macworld.co.uk/cmsdata/features/3236365/vimeox380.jpg">
-      </div>
-      <div>
-        <h1 class="mat-h1">{{ transcriptionItem.title }}</h1>
-        <p class="mat-body-1">{{ transcriptionItem.description }}</p>
-        <a class="mat-body-1">Download [{{ transcriptionItem.pdfUrl }}]</a>
-      </div>
-    </div>
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="45px">
+    <transcription-item color="primary"
+                        *ngFor="let transcriptionItem of transcription.transcriptions"
+                        [transcription]="transcriptionItem">
+    </transcription-item>
   </div>
 </div>
