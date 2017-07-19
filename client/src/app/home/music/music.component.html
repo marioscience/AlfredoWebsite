@@ -1,6 +1,6 @@
 <div class="music-container section-container">
   <h1 class="mat-h1 section-title">Music</h1>
-  <div fxLayout fxLayoutGap.gt-sm="30px">
+  <div fxLayout.lt-md="column" fxLayoutGap="30px">
     <video-player [src]="music.videoUrl"
                   fxFlex="70">
     </video-player>
@@ -9,6 +9,3 @@
     </md-card>
   </div>
 </div>
-
-
-
