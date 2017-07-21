@@ -166,8 +166,9 @@ var seedData = {
 
 };
 
-// I guess you need to put a file manually for things requiring files. Maybe there's a way to automate this as well, but
-// for now we'll just seed the path to mongo and render the file that was put manually in public from there.
+// Regarding static files in seed data: I guess you need to put a file manually for things requiring static files.
+// Maybe there's a way to automate this as well, but for now we'll just seed the path to mongo and render the file
+// that was put manually in public from there.
 
 module.exports = function(app) {
 
@@ -178,13 +179,24 @@ module.exports = function(app) {
     };
 
     app.get("/api/appSetup", function(req, res) {
-        /* Add seed data */
-        Introduction.create(seedData.introduction, logResult);
-        Music.create(seedData.music, logResult);
-        Transcription.create(seedData.transcription, logResult);
-        Biography.create(seedData.biography, logResult);
+        /* Remove old data. In the future require login for this path. and make sure an appropriate WARNING is given
+        that data is about to be wiped clean */
+        //console.log(process.env);
+        if (process.env.NODE_ENV === "development") {
+            Introduction.remove(logResult);
+            Music.remove(logResult);
+            Transcription.remove(logResult);
+            Biography.remove(logResult);
 
-        res.send("App Data Seeded Successfully");
+            /* Add seed data */
+            Introduction.create(seedData.introduction, logResult);
+            Music.create(seedData.music, logResult);
+            Transcription.create(seedData.transcription, logResult);
+            Biography.create(seedData.biography, logResult);
 
+            res.send("App Data Seeded Successfully");
+        } else {
+            res.send("Not Authorized");
+        }
     });
 };
