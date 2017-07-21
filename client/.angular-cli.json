@@ -18,6 +18,8 @@
       "tsconfig": "tsconfig.app.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/slick-carousel/slick/slick.scss",
+        "../node_modules/slick-carousel/slick/slick-theme.scss",
         "style/main.scss",
         "style/mat-app-theme.scss"
       ],
