@@ -1,10 +1,15 @@
 <div class="transcription-section section-container">
   <h1 class="mat-h1 section-title">Transcriptions</h1>
   <p class="mat-body-1">{{ transcription.description }}</p>
-  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="45px">
-    <transcription-item color="primary"
-                        *ngFor="let transcriptionItem of transcription.transcriptions"
-                        [transcription]="transcriptionItem">
-    </transcription-item>
-  </div>
+  <!--<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="45px">-->
+  <!--<transcription-item color="primary"-->
+  <!--*ngFor="let transcriptionItem of transcription.transcriptions"-->
+  <!--[transcription]="transcriptionItem">-->
+  <!--</transcription-item>-->
+  <!--</div>-->
+  <content-slider>
+    <div><h1>1</h1></div>
+    <div><h1>2</h1></div>
+    <div><h1>3</h1></div>
+  </content-slider>
 </div>
