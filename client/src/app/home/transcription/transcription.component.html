@@ -1,16 +1,12 @@
-<div class="transcription-section section-container">
+<div id="transcription-section" class="section-container">
   <h1 class="mat-h1 section-title">Transcriptions</h1>
   <p class="mat-body-1">{{ transcription.description }}</p>
-  <!--<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="45px">-->
-  <!--<transcription-item color="primary"-->
-  <!--*ngFor="let transcriptionItem of transcription.transcriptions"-->
-  <!--[transcription]="transcriptionItem">-->
-  <!--</transcription-item>-->
-  <!--</div>-->
   <content-slider *ngIf="transcription.transcriptions">
-    <transcription-item color="primary"
-                        *ngFor="let transcriptionItem of transcription.transcriptions"
-                        [transcription]="transcriptionItem">
-    </transcription-item>
+    <div *ngFor="let slideContent of transcription.transcriptions|multipleRow:2">
+      <transcription-item color="primary"
+                          *ngFor="let transcriptionItem of slideContent"
+                          [transcription]="transcriptionItem">
+      </transcription-item>
+    </div>
   </content-slider>
 </div>
