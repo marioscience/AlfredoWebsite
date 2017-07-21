@@ -57,25 +57,31 @@ var seedData = {
                 pdfUrl: "/pdfs/palotoblues.pdf"
             },
             {
-                title: "Transcription #2 Title",
+                title: "Transcription #3 Title",
                 videoUrl: "/videos/palotoblues.mp4",
                 description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
                 pdfUrl: "/pdfs/palotoblues.pdf"
             },
             {
-                title: "Transcription #2 Title",
+                title: "Transcription #4 Title",
                 videoUrl: "/videos/palotoblues.mp4",
                 description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
                 pdfUrl: "/pdfs/palotoblues.pdf"
             },
             {
-                title: "Transcription #2 Title",
+                title: "Transcription #5 Title",
                 videoUrl: "/videos/palotoblues.mp4",
                 description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
                 pdfUrl: "/pdfs/palotoblues.pdf"
             },
             {
-                title: "Transcription #2 Title",
+                title: "Transcription #6 Title",
+                videoUrl: "/videos/palotoblues.mp4",
+                description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
+                pdfUrl: "/pdfs/palotoblues.pdf"
+            },
+            {
+                title: "Transcription #7 Title",
                 videoUrl: "/videos/palotoblues.mp4",
                 description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
                 pdfUrl: "/pdfs/palotoblues.pdf"
