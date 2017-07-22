@@ -61,3 +61,13 @@ main.scss and in flex-layout directives. That means having a place for these var
 everywhere.
 
 - make cursor change on audioplayer items to let the user know they're clickable
+
+- oops, forgot to use app prefixes in component names.. https://angular.io/guide/styleguide#02-07
+
+- There's an issue that if you load the page with a screen size of xs or sm and resize the window to a bigger width the
+transcription section height will be double. This is really uninportant because the responsive feature is for different screens
+not for resizing. however, some people might stumble upon the bug and find it unpleasant/annoying. I think the problem can be resolved
+by resetting the flexbox system or the slider width.
+
+- change arrow style of sliders to be bigger angular brackets instead of the defaults.
+Do this by copying the theme file from slick and changing it there.
