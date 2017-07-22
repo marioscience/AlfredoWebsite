@@ -1,3 +1,10 @@
+:host.fixed {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
 .mat-display-4 {
   margin: 0;
 }
