@@ -4,6 +4,9 @@ import {Song} from "../../models/music.model";
 
 import {Howl} from "howler";
 
+/* NOTE: There's a lot of logic in this component. Logic should go into a service to separate concerns. The concern of
+the component is to update the view, not for app logic. Start by adding audioplayer.service.ts file */
+
 @Component({
   selector: "audio-player",
   templateUrl: "./audioplayer.component.html",

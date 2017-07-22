@@ -15,7 +15,6 @@ export class ContentSliderComponent implements AfterContentInit, OnDestroy {
 
   ngAfterContentInit(): void {
     $(this.el.nativeElement).slick();
-    console.log(this.el.nativeElement);
   }
 
   ngOnDestroy(): void {
