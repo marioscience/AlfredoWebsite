@@ -41,47 +41,22 @@ var seedData = {
         ]
     },
     transcription: {
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vel risus hendrerit, dapibus dolor at, placerat arcu. Nullam ut\n" +
-        "mauris ac augue ultrices sollicitudin quis sed neque. Proin feugiat vehicula volutpat",
+        description: "In this section, we will explore transcriptions from different instruments and their application to the guitar. For each transcription, I will provide a video playing the transcription, and also a music sheet in PDf format with an theoretical analysis. The goal for this section is to hear and see how jazz improvisation can be applied to many different latin-music styles.",
         transcriptions: [
             {
-                title: "Transcription #1 Title",
+                title: "Transcription #1: Luis Aquino Trumpet Solo - “Que Vale la Pena” by Juan Luis Guerra.",
                 videoUrl: "/videos/gagatojazz.mp4",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus et nulla ut odio commodo suscipit. Curabitur vel convallis quam, et dapibus sem. Curabitur nec molestie odio. Donec nulla sapien, venenatis ut nisl sed, gravida semper ipsum. Fusce rhoncus purus nisl, ut interdum nisi lacinia at. Quisque ut enim massa. Aenean vel vulputate orci, et iaculis turpis. Aenean tincidunt, lectus eu malesuada scelerisque, turpis eros bibendum tellus, nec placerat lorem lacus non risus. Suspendisse sit amet.",
                 pdfUrl: "/pdfs/gagatojazz.pdf"
             },
             {
-                title: "Transcription #2 Title",
+                title: "Transcripción #2: Caña Brava - Tavito Vásquez from “Alma Criolla”",
                 videoUrl: "/videos/palotoblues.mp4",
                 description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
                 pdfUrl: "/pdfs/palotoblues.pdf"
             },
             {
-                title: "Transcription #3 Title",
-                videoUrl: "/videos/palotoblues.mp4",
-                description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
-                pdfUrl: "/pdfs/palotoblues.pdf"
-            },
-            {
-                title: "Transcription #4 Title",
-                videoUrl: "/videos/palotoblues.mp4",
-                description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
-                pdfUrl: "/pdfs/palotoblues.pdf"
-            },
-            {
-                title: "Transcription #5 Title",
-                videoUrl: "/videos/palotoblues.mp4",
-                description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
-                pdfUrl: "/pdfs/palotoblues.pdf"
-            },
-            {
-                title: "Transcription #6 Title",
-                videoUrl: "/videos/palotoblues.mp4",
-                description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
-                pdfUrl: "/pdfs/palotoblues.pdf"
-            },
-            {
-                title: "Transcription #7 Title",
+                title: "Transcripción #3:  “Con el Alma” - Tavito Vasquez, first solo. ",
                 videoUrl: "/videos/palotoblues.mp4",
                 description: "Cras odio quam, scelerisque et finibus et, viverra ut magna. Nullam a justo sit amet est sagittis tincidunt nec ullamcorper ante. Pellentesque eget egestas arcu, ut commodo mauris. Nulla facilisi. Phasellus aliquet ligula in ligula tempor porta. Duis sed dignissim enim. Aliquam sodales, sapien vel accumsan porttitor, mauris ex dapibus dui, a rutrum diam lacus sit amet mauris. Vestibulum mattis rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sagittis orci urna, et.",
                 pdfUrl: "/pdfs/palotoblues.pdf"
