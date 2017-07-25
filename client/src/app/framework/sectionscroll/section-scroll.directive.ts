@@ -26,7 +26,7 @@ export class SectionScrollDirective implements OnInit {
         let elementScrollTop = this.elem.nativeElement.getBoundingClientRect().top;
         let elementScrollBottom = this.elem.nativeElement.getBoundingClientRect().bottom;
 
-        if (elementScrollTop < 0 && elementScrollBottom > 0) {
+        if ((elementScrollTop < 0 + $('navbar').height()) && (elementScrollBottom > 0 + $('navbar').height())) {
           this.sectionScrollService.targetScrolled(this.scrollTarget)
         }
       });
@@ -34,9 +34,11 @@ export class SectionScrollDirective implements OnInit {
       /* observable that signals that an element should be scrolled to */
       this.sectionScrollService.getScrollToObservable()
         .subscribe((elementId) => {
+          // why is jquery here?: https://goo.gl/ZCS6c5
+          // There's this[https://goo.gl/1xea7S] too, but I prefer compatibility over performance.
           if (elementId === this.scrollTarget) {
             $('html, body').animate({
-              scrollTop: $(this.elem.nativeElement).offset().top
+              scrollTop: $(this.elem.nativeElement).offset().top - $('navbar').height() + 1
             }, 500);
           }
         });
@@ -53,6 +55,10 @@ export class SectionScrollDirective implements OnInit {
       this.sectionScrollService.getTargetScrolled()
         .subscribe((target) => {
 
+          $(this.elem.nativeElement).removeClass("highlight");
+          if (target === this.scrollTo) {
+            $(this.elem.nativeElement).addClass("highlight");
+          }
         });
     }
   }
