@@ -6,6 +6,7 @@ export class SectionScrollService {
   @Output() scrollToEvent: EventEmitter<string> = new EventEmitter();
   @Output() targetScrolledEvent: EventEmitter<string> = new EventEmitter();
 
+  // signal that target element needs to be scrolled to
   scrollToTarget(target: string) {
     this.scrollToEvent.emit(target);
   }
@@ -14,6 +15,7 @@ export class SectionScrollService {
     return this.scrollToEvent;
   }
 
+  // signal that target element was scrolled
   targetScrolled(target: string) {
     this.targetScrolledEvent.emit(target);
   }
