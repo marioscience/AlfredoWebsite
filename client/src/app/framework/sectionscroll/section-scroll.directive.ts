@@ -1,15 +1,20 @@
-import {Directive, Input, Inject, Renderer2, OnInit, ElementRef} from "@angular/core";
+import {Directive, Input, Inject, Renderer2, OnInit, OnDestroy, ElementRef} from "@angular/core";
 import {SectionScrollService} from "./section-scroll.service";
 
 import {DOCUMENT} from "@angular/common";
 
 import * as $ from "jquery";
+import {Subscription} from "rxjs/Subscription";
+
 @Directive({
   selector: "[alfSectionScroll]"
 })
-export class SectionScrollDirective implements OnInit {
+export class SectionScrollDirective implements OnInit, OnDestroy {
   @Input() scrollTo: any;
   @Input() scrollTarget: any;
+
+  private scrollToSubscription: Subscription;
+  private targetScrolledSubscription: Subscription;
 
   constructor(private elem: ElementRef,
               private renderer: Renderer2,
@@ -18,43 +23,35 @@ export class SectionScrollDirective implements OnInit {
   }
 
   ngOnInit(): void {
+    let navbar = $('navbar');
 
     if (this.scrollTarget) {
-      /* Handle case when element is the target to be scrolled to */
-      /* When the page is scrolled detect if current section is the one selected */
       this.renderer.listen(this.document, "scroll", ($event) => {
         let elementScrollTop = this.elem.nativeElement.getBoundingClientRect().top;
         let elementScrollBottom = this.elem.nativeElement.getBoundingClientRect().bottom;
 
-        if ((elementScrollTop < 0 + $('navbar').height()) && (elementScrollBottom > 0 + $('navbar').height())) {
+        if ((elementScrollTop < navbar.height()) && (elementScrollBottom > navbar.height())) {
           this.sectionScrollService.targetScrolled(this.scrollTarget)
         }
       });
 
-      /* observable that signals that an element should be scrolled to */
-      this.sectionScrollService.getScrollToObservable()
+      this.scrollToSubscription = this.sectionScrollService.getScrollToObservable()
         .subscribe((elementId) => {
-          // why is jquery here?: https://goo.gl/ZCS6c5
-          // There's this[https://goo.gl/1xea7S] too, but I prefer compatibility over performance.
           if (elementId === this.scrollTarget) {
             $('html, body').animate({
-              scrollTop: $(this.elem.nativeElement).offset().top - $('navbar').height() + 1
+              scrollTop: $(this.elem.nativeElement).offset().top - navbar.height() + 1
             }, 500);
           }
         });
     }
 
     if (this.scrollTo) {
-      /* Handle case when element points to element to scroll to */
-      /* When an element is clicked that has scrollTo send the element identifier in the service */
       this.renderer.listen(this.elem.nativeElement, "click", () => {
         this.sectionScrollService.scrollToTarget(this.scrollTo);
       });
 
-      /* this subcriptions signals that the navbar button should be highlighted */
-      this.sectionScrollService.getTargetScrolled()
+      this.targetScrolledSubscription = this.sectionScrollService.getTargetScrolled()
         .subscribe((target) => {
-
           $(this.elem.nativeElement).removeClass("highlight");
           if (target === this.scrollTo) {
             $(this.elem.nativeElement).addClass("highlight");
@@ -63,20 +60,13 @@ export class SectionScrollDirective implements OnInit {
     }
   }
 
-  private findElementPosition(elem: ElementRef): number {
-    let node = elem.nativeElement;
-    let curtop = 0;
-    let curtopScroll = 0;
+  ngOnDestroy(): void {
+    if (this.scrollToSubscription) {
+      this.scrollToSubscription.unsubscribe();
+    }
 
-    console.log(elem);
-
-    if (node.offsetParent) {
-      do {
-        curtop += node.offsetTop;
-        curtopScroll += node.offsetParent ? node.offsetParent.scrollTop : 0;
-      } while (node = node.offsetParent);
-
-      return curtop - curtopScroll;
+    if (this.targetScrolledSubscription) {
+      this.targetScrolledSubscription.unsubscribe();
     }
   }
 }
