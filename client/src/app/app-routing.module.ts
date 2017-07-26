@@ -2,12 +2,18 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 
 import {HomeComponent} from "./home/home.component";
+import {ConcertsComponent} from "./concerts/concerts.component";
+
 // import { AdminComponent } from "./admin/admin.component";
 
 let routes: Routes = [
   {
     path: "",
     component: HomeComponent
+  },
+  {
+    path: "concerts",
+    component: ConcertsComponent
   },
   { // Add 404 page if app grows. Admin page still missing
     path: "**",
