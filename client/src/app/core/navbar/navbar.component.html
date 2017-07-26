@@ -3,11 +3,11 @@
   <span class="mat-display-4">ALFREDO BALCACER</span>
   <span class="navbar-spacer"></span>
   <div fxLayout fxShow="false" fxShow.gt-sm>
-    <button md-button alfSectionScroll scrollTo="#introduction-section">Home</button>
-    <button md-button alfSectionScroll scrollTo="#music-section">Music</button>
-    <button md-button alfSectionScroll scrollTo="#transcription-section">Transcription</button>
-    <button md-button>Concerts</button>
-    <button md-button alfSectionScroll scrollTo="#biography-section">Bio+Gear</button>
+    <button md-button alfSectionScroll scrollTo="#introduction-section" routerLink="/">Home</button>
+    <button md-button alfSectionScroll scrollTo="#music-section" routerLink="/">Music</button>
+    <button md-button alfSectionScroll scrollTo="#transcription-section" routerLink="/">Transcription</button>
+    <button md-button routerLink="/concerts">Concerts</button>
+    <button md-button alfSectionScroll scrollTo="#biography-section" routerLink="/">Bio+Gear</button>
     <button md-button>Contact</button>
   </div>
   <button md-button [mdMenuTriggerFor]="menu" fxHide="false" fxHide.gt-sm>
@@ -20,7 +20,7 @@
   <button md-menu-item alfSectionScroll scrollTo="#introduction-section">Home</button>
   <button md-menu-item alfSectionScroll scrollTo="#music-section">Music</button>
   <button md-menu-item alfSectionScroll scrollTo="#transcription-section">Transcription</button>
-  <button md-menu-item>Concerts</button>
+  <button md-menu-item routerLink="/concerts">Concerts</button>
   <button md-menu-item alfSectionScroll scrollTo="#biography-section">Bio+Gear</button>
   <button md-menu-item>Contact</button>
 </md-menu>

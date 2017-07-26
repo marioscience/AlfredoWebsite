@@ -7,9 +7,6 @@ import {FrameworkModule} from "../framework/framework.module";
 import {MaterialModule} from "../core/material.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
-import {NavbarComponent} from "./navbar/navbar.component";
-import {FooterComponent} from "./footer/footer.component";
-
 import {IntroductionComponent} from "./introduction/introduction.component";
 import {MusicComponent} from "./music/music.component";
 import {BiographyComponent} from "./biography/biography.component";
@@ -27,11 +24,9 @@ import {FormsModule} from "@angular/forms";
     FrameworkModule
   ],
   exports: [
-    HomeComponent,
+    HomeComponent
   ],
   declarations: [
-    NavbarComponent,
-    FooterComponent,
     HomeComponent,
     IntroductionComponent,
     MusicComponent,
