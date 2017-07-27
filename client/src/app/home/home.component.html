@@ -1,6 +1,18 @@
 <md-sidenav-container>
-  <introduction-section></introduction-section>
-  <music-section></music-section>
-  <transcription-section fxLayout="column" fxLayoutAlign.gt-sm="center center"></transcription-section>
-  <biography-section fxLayout="column" fxLayoutAlign.gt-xs="center center"></biography-section>
+  <introduction-section alfSectionScroll
+                        scrollTarget="#introduction-section">
+  </introduction-section>
+  <music-section alfSectionScroll
+                 scrollTarget="#music-section">
+  </music-section>
+  <transcription-section fxLayout="column"
+                         fxLayoutAlign.gt-sm="center center"
+                         alfSectionScroll
+                         scrollTarget="#transcription-section">
+  </transcription-section>
+  <biography-section fxLayout="column"
+                     fxLayoutAlign.gt-xs="center center"
+                     alfSectionScroll
+                     scrollTarget="#biography-section">
+  </biography-section>
 </md-sidenav-container>
