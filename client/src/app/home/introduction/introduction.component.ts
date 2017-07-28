@@ -16,9 +16,7 @@ export class IntroductionComponent implements OnInit {
 
   ngOnInit(): void {
     this.introductionService.getIntroduction()
-      .then(introduction => {
-        this.introduction = introduction
-      });
+      .then(introduction => this.introduction = introduction);
   }
 
 }

@@ -35,7 +35,8 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
         }
       });
 
-      this.scrollToSubscription = this.sectionScrollService.getScrollToObservable()
+      let scrollToObservable = this.sectionScrollService.getScrollToObservable();
+      this.scrollToSubscription = scrollToObservable
         .subscribe((elementId) => {
           if (elementId === this.scrollTarget) {
             $('html, body').animate({
