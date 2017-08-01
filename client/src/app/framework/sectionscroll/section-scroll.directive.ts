@@ -1,10 +1,14 @@
 import {Directive, Input, Inject, Renderer2, OnInit, OnDestroy, ElementRef} from "@angular/core";
 import {SectionScrollService} from "./section-scroll.service";
 
+import {Router, NavigationEnd} from "@angular/router";
+
 import {DOCUMENT} from "@angular/common";
 
 import * as $ from "jquery";
+
 import {Subscription} from "rxjs/Subscription";
+import "rxjs/add/operator/sample";
 
 @Directive({
   selector: "[alfSectionScroll]"
@@ -18,6 +22,7 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
 
   constructor(private elem: ElementRef,
               private renderer: Renderer2,
+              private router: Router,
               @Inject(DOCUMENT) private document: Document,
               private sectionScrollService: SectionScrollService) {
   }
@@ -36,12 +41,26 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
       });
 
       let scrollToObservable = this.sectionScrollService.getScrollToObservable();
-      this.scrollToSubscription = scrollToObservable
-        .subscribe((elementId) => {
+      let navigationEndEvents = this.router.events.filter(event => event instanceof NavigationEnd);
+
+      scrollToObservable
+        .sample(navigationEndEvents)
+        .subscribe(elementId => {
+          console.log(this.elem.nativeElement.offsetTop);
           if (elementId === this.scrollTarget) {
+            console.log(this);
+            setTimeout(() => {
+              console.log(this.elem.nativeElement.offsetTop);
+            }, 1000);
+
             $('html, body').animate({
-              scrollTop: $(this.elem.nativeElement).offset().top - navbar.height() + 1
+              scrollTop: this.elem.nativeElement.offsetTop - navbar.height() + 1
             }, 500);
+
+            /* This is a no no in angular, but at least it replaces jQuery, which is another no no. They still don't say
+            * much about the yes yeses */
+            //window.scrollTo({top: this.elem.nativeElement.offsetTop, left: 0, behavior: "smooth"})
+
           }
         });
     }
