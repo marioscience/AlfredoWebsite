@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {MusicService} from "../../services/music.service";
+import {ActivatedRoute} from "@angular/router";
 import {Music} from "../../models/music.model";
 
 @Component({
@@ -10,7 +10,7 @@ import {Music} from "../../models/music.model";
 export class MusicComponent implements OnInit {
   music = new Music();
 
-  constructor(private musicService: MusicService) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -18,8 +18,10 @@ export class MusicComponent implements OnInit {
   }
 
   getMusic(): void {
-    this.musicService.getMusic()
-      .then(music => this.music = music);
+    this.route.data.subscribe(data => {
+      const musicIndex = 1;
+      this.music = <Music>data.resolved[musicIndex];
+    })
   }
 
 }

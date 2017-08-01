@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {IntroductionService} from "../../services/introduction.service";
+import {ActivatedRoute} from "@angular/router";
 import {Introduction} from "../../models/introduction.model";
 
 @Component({
@@ -11,12 +11,15 @@ import {Introduction} from "../../models/introduction.model";
 export class IntroductionComponent implements OnInit {
   introduction = new Introduction();
 
-  constructor(private introductionService: IntroductionService) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.introductionService.getIntroduction()
-      .then(introduction => this.introduction = introduction);
+    this.route.data.subscribe(data => {
+      const introductionIndex = 0;
+      this.introduction = <Introduction>data.resolved[introductionIndex];
+    });
+
   }
 
 }

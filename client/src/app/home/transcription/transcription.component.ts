@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {TranscriptionService} from "../../services/transcription.service";
+import {ActivatedRoute} from "@angular/router";
 import {Transcription} from "../../models/transcription.model";
 
 @Component({
@@ -7,13 +7,15 @@ import {Transcription} from "../../models/transcription.model";
   templateUrl: "./transcription.component.html"
 })
 export class TranscriptionComponent implements OnInit {
-  constructor(private transcriptionService: TranscriptionService) {
+  constructor(private route: ActivatedRoute) {
   }
 
   transcription = new Transcription();
 
   ngOnInit(): void {
-    this.transcriptionService.getTranscription()
-      .then(transcription => this.transcription = transcription);
+    this.route.data.subscribe(data => {
+      const transcriptionIndex = 2;
+      this.transcription = <Transcription>data.resolved[transcriptionIndex];
+    });
   }
 }
