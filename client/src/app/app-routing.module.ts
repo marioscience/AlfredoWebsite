@@ -4,12 +4,17 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
 import {ConcertsComponent} from "./concerts/concerts.component";
 
+import {HomeResolver} from "./home/home-resolver.service";
+
 // import { AdminComponent } from "./admin/admin.component";
 
 let routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: HomeComponent,
+    resolve: {
+      resolved: HomeResolver
+    }
   },
   {
     path: "concerts",
@@ -25,7 +30,8 @@ let routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [HomeResolver]
 })
 export class AppRoutingModule {
 }
