@@ -7,7 +7,7 @@ import {TranscriptionService} from "../services/transcription.service";
 import {BiographyService} from "../services/biography.service";
 
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/forkJoin';
 
 
 @Injectable()
@@ -19,7 +19,7 @@ export class HomeResolver implements Resolve<any> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return Observable.combineLatest(
+    return Observable.forkJoin(
       this.introductionService.getIntroduction(),
       this.musicService.getMusic(),
       this.transcriptionService.getTranscription(),
