@@ -24,8 +24,14 @@ export class SectionScrollService {
     });
   }
 
-  getPendingTarget(): Array<string> {
-    return this.pendingTargets;
+  /* This function should be called when navigation is done. When you are sure that
+  * rendering of component is done. For example when the video tag renders and there's
+  * no way to know that it finished. When the component's heigh get adjusted the scroll
+  * position is off. */
+  resolvePendingTargets(): void {
+    if (this.pendingTargets) {
+      this.scrollToTarget(this.pendingTargets.pop());
+    }
   }
 
   // signal that target element needs to be scrolled to

@@ -7,8 +7,7 @@
  *
  * */
 
-import {Component, ElementRef, Renderer2, Inject, OnInit} from "@angular/core";
-import {Input} from "@angular/core";
+import {Component, ElementRef, Renderer2, Inject, OnInit, Input, Output, EventEmitter} from "@angular/core";
 
 import {ViewChild} from "@angular/core";
 
@@ -29,6 +28,7 @@ export class VideoPlayerComponent implements OnInit {
   volume: number;
   progressPercent: number;
   isFullscreenEnabled: boolean;
+  @Output() videoLoaded = new EventEmitter();
 
   constructor(private renderer: Renderer2,
               @Inject(DOCUMENT) private document: Document) {
@@ -46,6 +46,12 @@ export class VideoPlayerComponent implements OnInit {
     this.renderer.listen(this.videoElement, "timeupdate", () => {
       this.updateProgress()
     });
+  }
+
+  videoFinishedLoading(): void {
+    let w = this.videoElement.videoWidth;
+    let h = this.videoElement.videoHeight;
+    this.videoLoaded.emit({width: w, height: h});
   }
 
   playPause(): void {

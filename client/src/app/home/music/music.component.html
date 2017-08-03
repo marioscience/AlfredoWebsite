@@ -2,6 +2,7 @@
   <h1 class="mat-h1 section-title">Music</h1>
   <div fxLayout.lt-md="column" fxLayoutGap="30px">
     <video-player [src]="music.videoUrl"
+                  (videoLoaded)="videoLoaded($event)"
                   fxFlex="70">
     </video-player>
     <md-card fxFlex="30">

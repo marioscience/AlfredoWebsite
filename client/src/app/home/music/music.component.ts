@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Music} from "../../models/music.model";
 
+import {SectionScrollService} from "../../framework/sectionscroll/section-scroll.service";
+
 @Component({
   selector: "music-section",
   templateUrl: "./music.component.html",
@@ -10,7 +12,8 @@ import {Music} from "../../models/music.model";
 export class MusicComponent implements OnInit {
   music = new Music();
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private sectionScrollService: SectionScrollService) {
   }
 
   ngOnInit(): void {
@@ -24,4 +27,7 @@ export class MusicComponent implements OnInit {
     })
   }
 
+  videoLoaded(videoSize): void {
+    this.sectionScrollService.resolvePendingTargets();
+  }
 }

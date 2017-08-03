@@ -2,6 +2,7 @@
   <video #videoElement class="video-stream html5-main-video"
          controls controlsList="nodownload"
          preload="metadata"
+         (loadedmetadata)="videoFinishedLoading()"
          src="{{ src }}">
 
   </video>

@@ -38,7 +38,6 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
       });
 
       let scrollToObservable = this.sectionScrollService.getScrollToObservable();
-      let pendingTarget = this.sectionScrollService.getPendingTarget();
 
       this.scrollToSubscription = scrollToObservable
         .subscribe(elementId => {
@@ -52,13 +51,6 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
             //window.scrollTo({top: this.elem.nativeElement.offsetTop, left: 0, behavior: "smooth"})
           }
         });
-
-      let scrollTargetIndex = pendingTarget.indexOf(this.scrollTarget);
-
-      if (scrollTargetIndex !== -1) {
-        this.sectionScrollService.scrollToTarget(pendingTarget[scrollTargetIndex]);
-        pendingTarget.splice(0);
-      }
     }
 
     if (this.scrollTo) {
