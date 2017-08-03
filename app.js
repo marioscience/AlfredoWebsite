@@ -11,6 +11,7 @@ var musicController = require("./controllers/musicController");
 var transcriptionController = require("./controllers/transcriptionController");
 var biographyController = require("./controllers/biographyController");
 var clientController = require("./controllers/clientController");
+var songkickDataController = require("./controllers/songkickDataController");
 
 var app = express();
 
@@ -29,5 +30,6 @@ musicController(app);
 transcriptionController(app);
 biographyController(app);
 clientController(app);
+songkickDataController(app);
 
 app.listen(port);
