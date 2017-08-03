@@ -4,7 +4,7 @@ import {Biography} from "../models/biography.model";
 
 import "rxjs/add/operator/toPromise";
 
-import {ApiRootConstants as apiUrls} from "../core/api-roots.constant";
+import {ApiRootConstants as apiUrls} from "../core/app.constants";
 import {LoggerService} from "../core/logger.service";
 
 @Injectable()

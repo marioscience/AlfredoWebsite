@@ -7,7 +7,7 @@ import {Music} from "../models/music.model";
 
 import {LoggerService} from "../core/logger.service";
 
-import {ApiRootConstants as apiUrls} from "../core/api-roots.constant";
+import {ApiRootConstants as apiUrls} from "../core/app.constants";
 
 @Injectable()
 export class MusicService {

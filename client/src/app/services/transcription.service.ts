@@ -4,7 +4,7 @@ import {Injectable} from "@angular/core";
 import {Transcription} from "../models/transcription.model";
 
 import {LoggerService} from "../core/logger.service";
-import {ApiRootConstants as apiUrls} from "../core/api-roots.constant";
+import {ApiRootConstants as apiUrls} from "../core/app.constants";
 
 import "rxjs/add/operator/toPromise";
 
