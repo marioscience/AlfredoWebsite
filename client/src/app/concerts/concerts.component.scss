@@ -1,0 +1,5 @@
+@import "../../style/variables";
+
+:host > #concert-section {
+  margin-top: $navbar-height; //account for height of navbar.
+}
