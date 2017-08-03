@@ -1,19 +1,39 @@
 import {Injectable, Output, EventEmitter} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 
+import {Router, NavigationEnd, NavigationStart} from "@angular/router";
+
 @Injectable()
 export class SectionScrollService {
   @Output() scrollToEvent: EventEmitter<string> = new EventEmitter();
   @Output() targetScrolledEvent: EventEmitter<string> = new EventEmitter();
-  pendingServicesCount = 0;
-  pendingTargets: Array<string> = [];
+
+  private pendingTargets: Array<string> = [];
+  private isNavigating: boolean = false;
+
+  constructor(private router: Router,) {
+    let navigationStartEvents = this.router.events.filter(event => event instanceof NavigationStart);
+    let navigationEndEvents = this.router.events.filter(event => event instanceof NavigationEnd);
+
+    navigationStartEvents.subscribe(val => {
+      this.isNavigating = true;
+    });
+
+    navigationEndEvents.subscribe(val => {
+      this.isNavigating = false;
+    });
+  }
+
+  getPendingTarget(): Array<string> {
+    return this.pendingTargets;
+  }
 
   // signal that target element needs to be scrolled to
   scrollToTarget(target: string) {
-    if (this.pendingServicesCount === 0) {
-      this.scrollToEvent.emit(target);
-    } else {
+    if (this.isNavigating) {
       this.pendingTargets.push(target);
+    } else {
+      this.scrollToEvent.emit(target);
     }
   }
 
@@ -28,20 +48,5 @@ export class SectionScrollService {
 
   getTargetScrolled(): Observable<string> {
     return this.targetScrolledEvent;
-  }
-
-  setServicesPending(value: boolean) {
-    if (value) {
-      this.pendingServicesCount++;
-    } else {
-      this.pendingServicesCount--;
-
-      if (this.pendingServicesCount === 0) {
-        this.pendingTargets.forEach((value) => {
-          this.scrollToEvent.emit(value);
-        });
-        this.pendingTargets = [];
-      }
-    }
   }
 }

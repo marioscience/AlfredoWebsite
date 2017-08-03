@@ -1,8 +1,6 @@
 import {Directive, Input, Inject, Renderer2, OnInit, OnDestroy, ElementRef} from "@angular/core";
 import {SectionScrollService} from "./section-scroll.service";
 
-import {Router, NavigationEnd} from "@angular/router";
-
 import {DOCUMENT} from "@angular/common";
 
 import * as $ from "jquery";
@@ -22,7 +20,6 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
 
   constructor(private elem: ElementRef,
               private renderer: Renderer2,
-              private router: Router,
               @Inject(DOCUMENT) private document: Document,
               private sectionScrollService: SectionScrollService) {
   }
@@ -41,18 +38,11 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
       });
 
       let scrollToObservable = this.sectionScrollService.getScrollToObservable();
-      let navigationEndEvents = this.router.events.filter(event => event instanceof NavigationEnd);
+      let pendingTarget = this.sectionScrollService.getPendingTarget();
 
-      scrollToObservable
-        .sample(navigationEndEvents)
+      this.scrollToSubscription = scrollToObservable
         .subscribe(elementId => {
-          console.log(this.elem.nativeElement.offsetTop);
           if (elementId === this.scrollTarget) {
-            console.log(this);
-            setTimeout(() => {
-              console.log(this.elem.nativeElement.offsetTop);
-            }, 1000);
-
             $('html, body').animate({
               scrollTop: this.elem.nativeElement.offsetTop - navbar.height() + 1
             }, 500);
@@ -60,9 +50,15 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
             /* This is a no no in angular, but at least it replaces jQuery, which is another no no. They still don't say
             * much about the yes yeses */
             //window.scrollTo({top: this.elem.nativeElement.offsetTop, left: 0, behavior: "smooth"})
-
           }
         });
+
+      let scrollTargetIndex = pendingTarget.indexOf(this.scrollTarget);
+
+      if (scrollTargetIndex !== -1) {
+        this.sectionScrollService.scrollToTarget(pendingTarget[scrollTargetIndex]);
+        pendingTarget.splice(0);
+      }
     }
 
     if (this.scrollTo) {
@@ -90,21 +86,3 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
     }
   }
 }
-
-
-/*
-*
-* This directive is to accomplish the following:
-* 1. Components that will let buttons know that they match scrollTop (with certain margin, maybe the size of the window to reflect that it's into view)
-* 2. Buttons that can trigger an element scrolling to the top.
-*
-* Note: if this directive grows out of proportions it should be divided into two directives for to and target and possibly a service.
-*
-* Idea for Implementation:
-*
-* Have a single directive scrollSection for all elements, then have two attributes scrollTo and scrollTarget.
-* scrollTo: takes an identifier to scroll to.
-* scrollTarget: takes an identifier and scroll to it when necessary
-*
-*
-* */
