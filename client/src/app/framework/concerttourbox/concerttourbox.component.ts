@@ -3,11 +3,11 @@ import {ConcertTourboxService} from "./concerttourbox.service";
 
 @Component({
   selector: "concert-tourbox",
-  template: `
-    <h1>This is the concerts</h1>
-  `
+  templateUrl: "./concerttourbox.component.html"
 })
 export class ConcertTourboxComponent implements OnInit {
+  /* This variable is supposed to receive an api endpoint to call. Then the server makes the call to songkick using the
+  * artistId and apiKey. That's to protect the apiKey from being stolen and abused. */
   @Input() apiPath: string;
   private concertData: any;
 
@@ -16,6 +16,6 @@ export class ConcertTourboxComponent implements OnInit {
 
   ngOnInit(): void {
     this.concertService.getConcerts(this.apiPath)
-      .then(concerts => this.concertData = concerts);
+      .then(concerts => this.concertData = concerts.resultsPage.results.event);
   }
 }

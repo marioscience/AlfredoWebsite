@@ -10,6 +10,9 @@ import {MultipleRowPipe} from "./multiple-row.pipe";
 import {SectionScrollDirective} from "./sectionscroll/section-scroll.directive";
 import {SectionScrollService} from "./sectionscroll/section-scroll.service";
 
+import {ConcertTourboxComponent} from "./concerttourbox/concerttourbox.component";
+import {ConcertTourboxService} from "./concerttourbox/concerttourbox.service";
+
 import {FormsModule} from "@angular/forms";
 
 @NgModule({
@@ -23,7 +26,8 @@ import {FormsModule} from "@angular/forms";
     AudioplayerComponent,
     ContentSliderComponent,
     MultipleRowPipe,
-    SectionScrollDirective
+    SectionScrollDirective,
+    ConcertTourboxComponent
   ],
   exports: [
     MaterialModule,
@@ -31,10 +35,12 @@ import {FormsModule} from "@angular/forms";
     AudioplayerComponent,
     ContentSliderComponent,
     MultipleRowPipe,
-    SectionScrollDirective
+    SectionScrollDirective,
+    ConcertTourboxComponent
   ],
   providers: [
-    SectionScrollService
+    SectionScrollService,
+    ConcertTourboxService
   ]
 })
 export class FrameworkModule {
