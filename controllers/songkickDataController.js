@@ -71,12 +71,26 @@ module.exports = function (app) {
                 "        \"start\":{\"time\":\"20:00:00\",\n" +
                 "                 \"date\":\"2012-04-18\",\n" +
                 "                 \"datetime\":\"2012-04-18T20:00:00-0800\"},\n" +
-                "        \"performance\":[{\"artist\":{\"uri\":\"http://www.songkick.com/artists/29835-wild-flag?utm_source=PARTNER_ID&utm_medium=partner\",\n" +
+                "        \"performance\":[\n" +
+                "{\"artist\":{\"uri\":\"http://www.songkick.com/artists/29835-wild-flag?utm_source=PARTNER_ID&utm_medium=partner\",\n" +
                 "                                  \"displayName\":\"Wild Flag\",\"id\":29835,\"identifier\":[]},\n" +
                 "                        \"displayName\":\"Wild Flag\",\n" +
                 "                        \"billingIndex\":1,\n" +
                 "                        \"id\":21579303,\n" +
-                "                        \"billing\":\"headline\"}],\n" +
+                "                        \"billing\":\"headline\"},\n" +
+                "{\"artist\":{\"uri\":\"http://www.songkick.com/artists/29835-wild-flag?utm_source=PARTNER_ID&utm_medium=partner\",\n" +
+                "                                  \"displayName\":\"Cocusions\",\"id\":29835,\"identifier\":[]},\n" +
+                "                        \"displayName\":\"Wild Flag\",\n" +
+                "                        \"billingIndex\":1,\n" +
+                "                        \"id\":21579303,\n" +
+                "                        \"billing\":\"headline\"},\n" +
+                "{\"artist\":{\"uri\":\"http://www.songkick.com/artists/29835-wild-flag?utm_source=PARTNER_ID&utm_medium=partner\",\n" +
+                "                                  \"displayName\":\"Le petieest\",\"id\":29835,\"identifier\":[]},\n" +
+                "                        \"displayName\":\"Wild Flag\",\n" +
+                "                        \"billingIndex\":1,\n" +
+                "                        \"id\":21579303,\n" +
+                "                        \"billing\":\"headline\"}\n" +
+                "],\n" +
                 "        \"location\":{\"city\":\"San Francisco, CA, US\",\"lng\":-122.4332937,\"lat\":37.7842398},\n" +
                 "        \"venue\":{\"id\":6239,\n" +
                 "                 \"displayName\":\"The Fillmore\",\n" +
