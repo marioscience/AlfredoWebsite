@@ -6,6 +6,7 @@ import {BrowserModule} from "@angular/platform-browser";
 
 import {AppComponent} from './app.component';
 import {HomeModule} from "./home/home.module";
+import {AdminModule} from "./admin/admin.module";
 import {ConcertsModule} from "./concerts/concerts.module";
 
 
@@ -25,6 +26,7 @@ import {TranscriptionService} from "./services/transcription.service";
     BrowserModule,
     CoreModule,
     HomeModule,
+    AdminModule,
     ConcertsModule,
     AppRoutingModule, // Create separated route modules for each feature module?
     HttpModule// <- state your purpose!
