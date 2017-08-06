@@ -8,4 +8,5 @@ import {ApiRootConstants} from "../core/app.constants";
   styleUrls: ["./concerts.component.scss"]
 })
 export class ConcertsComponent {
+  private concertsApiRoot = ApiRootConstants.concertSchedule;
 }
