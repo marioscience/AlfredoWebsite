@@ -3,8 +3,9 @@
     <md-card-title>Alfredo Balcacer live dates</md-card-title>
   </md-card-header>
   <md-card-content>
-    <md-card *ngFor="let concert of concertData" fxLayout="row" fxLayoutAlign="space-around center">
-      <div fxFlex="45">
+    <md-card *ngFor="let concert of concertData"
+             fxLayout.lt-md="column" fxLayout.gt-md="row" fxLayoutAlign.gt-md="space-around center">
+      <div fxFlex.gt-md="45">
         <h3>{{ concert.start.datetime | date:"mediumDate"}} @ {{ concert.start.datetime | date:"shortTime" }}</h3>
         <h4>{{ concert.venue.displayName }}</h4>
         <p *ngIf="concert.performance.length > 1" class="mat-body">
@@ -14,10 +15,10 @@
 
         </p>
       </div>
-      <div fxFlex="40">
+      <div fxFlex.gt-md="40">
         <h4 class="mat-subheading-1">{{ concert.location.city }}</h4>
       </div>
-      <div fxFlex="15">
+      <div fxFlex.gt-md="15">
         <a md-button>Tickets</a>
       </div>
     </md-card>
