@@ -30,3 +30,7 @@ Angular Material is in beta so I'm allowed to do this. yay! */
 #biography-section {
   max-width: 960px; //!important; // angular/flexbox is using this in the element
 }
+
+a {
+  color: $white;
+}
