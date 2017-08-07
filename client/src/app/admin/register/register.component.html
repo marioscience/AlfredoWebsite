@@ -1,0 +1,18 @@
+<h1 class="mat-h1 section-title">Register</h1>
+<md-card fxLayout="column" class="section-container register-section">
+  <md-input-container>
+    <input mdInput #username type="text" placeholder="Username">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput #email type="email" placeholder="Email">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput #password type="password" placeholder="Password">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput #passwordMatch type="password" placeholder="Password">
+  </md-input-container>
+  <button md-button (click)="register(username.value, email.value, password.value, passwordMatch.value)">Register
+  </button>
+  <a routerLink="/admin/login">Already Registered?</a>
+</md-card>

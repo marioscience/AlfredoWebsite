@@ -1,0 +1,11 @@
+<h1 class="mat-h1 section-title">Login</h1>
+<md-card fxLayout="column" class="section-container login-section">
+  <md-input-container>
+    <input mdInput #username type="text" placeholder="Username">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput #password type="password" placeholder="Password">
+  </md-input-container>
+  <button md-button (click)="login(username.value, password.value)">Login</button>
+  <a routerLink="/admin/register">Register here</a>
+</md-card>

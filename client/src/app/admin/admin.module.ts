@@ -6,18 +6,27 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
+import {AdminRoutingModule} from "./admin-routing.module";
+
+import {RegisterComponent} from "./register/register.component";
+import {LoginComponent} from "./login/login.component";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AdminRoutingModule
   ],
   declarations: [
-    AdminComponent
+    AdminComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   exports: [
-    AdminComponent
+    AdminComponent,
+    AdminRoutingModule
   ]
 })
 export class AdminModule {
