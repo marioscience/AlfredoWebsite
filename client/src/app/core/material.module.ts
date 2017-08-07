@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
+  MdInputModule,
   MdIconModule,
   MdSidenavModule,
   MdButtonModule,
@@ -27,6 +28,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   imports: [
     CommonModule,
     BrowserAnimationsModule,
+    MdInputModule,
     MdIconModule,
     MdButtonModule,
     MdSidenavModule,
@@ -41,6 +43,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   exports: [
     CommonModule,
     BrowserAnimationsModule,
+    MdInputModule,
     MdIconModule,
     MdButtonModule,
     MdSidenavModule,

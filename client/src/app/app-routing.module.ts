@@ -20,10 +20,6 @@ let routes: Routes = [
     path: "concerts",
     component: ConcertsComponent
   },
-  {
-    path: "admin",
-    component: AdminComponent
-  },
   { // Add 404 page if app grows. Admin page still missing
     path: "**",
     redirectTo: "",
