@@ -29,18 +29,29 @@ module.exports = function (app, environment) {
     app.post("/api/admin/register", function (req, res) {
 
         // Validate data !!!
-        req.checkBody("username", "Username cannot be empty,").notEmpty();
+        req.checkBody("username", "Username cannot be empty.").notEmpty();
+        req.checkBody("username", "Username is too short.").len(4);
 
         req.checkBody("email", "Email is not valid.").isEmail();
+        req.checkBody("email", "Email is too short.").len(7);
 
-        req.checkBody("password", "")
+        req.checkBody("password", "Password doesn't meet minimum requirements.").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "i");
+        req.checkBody("passwordMatch", "Passwords must match").equals(req.body.password);
 
         // Sanitize
         // Check if user exists !!!
 
         // Set first user as admin !!!
         var errors = [];
-        bcrypt.hash(req.body.password, saltRounds, hashPasswordHandler_factory(req, res, errors));
+
+        req.getValidationResult().then(function (result) {
+            if (!result.isEmpty()) {
+                errors = result.array();
+                res.send(errors);
+            } else {
+                bcrypt.hash(req.body.password, saltRounds, hashPasswordHandler_factory(req, res, errors));
+            }
+        });
     });
 
     app.post("/login", function (req, res) {
