@@ -12,6 +12,7 @@ var transcriptionController = require("./controllers/transcriptionController");
 var biographyController = require("./controllers/biographyController");
 var clientController = require("./controllers/clientController");
 var songkickDataController = require("./controllers/songkickDataController");
+var authController = require("./controllers/authController");
 
 var app = express();
 
@@ -24,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 mongoose.connect(config.getDBConnectionString(appEnv));
+
+authController(app, appEnv);
+
 setupData(app);
 introductionController(app);
 musicController(app);

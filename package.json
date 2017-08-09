@@ -17,8 +17,14 @@
     "url": "https://github.com/marioscience/alfredowebsite/issues"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "express-validator": "^3.2.1",
     "mongoose": "^4.11.0"
+  },
+  "engines": {
+    "node": "6.11.0"
   }
 }
