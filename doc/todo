@@ -71,3 +71,7 @@ by resetting the flexbox system or the slider width.
 
 - change arrow style of sliders to be bigger angular brackets instead of the defaults.
 Do this by copying the theme file from slick and changing it there.
+
+- **SECURITY** Call the virtual police on the register and login pages. They take input from potentially untrusted users.
+Joking aside, sanitize inputs and prevent code from being injected on the database from those inputs. Also, and very important,
+users are going to be listed on the admin side, watch out for XSS attack. some todos in this list can be ignored NOT THIS ONE

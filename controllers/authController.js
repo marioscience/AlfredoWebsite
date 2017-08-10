@@ -1,6 +1,7 @@
-var session = require("express-session");
 var validator = require("express-validator");
 var bcrypt = require("bcrypt");
+var session = require("express-session");
+var passport = require("passport");
 
 var User = require("../models/userModel");
 
@@ -8,7 +9,6 @@ module.exports = function (app, environment) {
     app.use(validator());
 
     var saltRounds = 10;
-
     /* TODO: Save secret somewhere safe (hint: environment variable) */
     var sessionOptions = {
         secret: "laheuaobuebpowufpoIAFADsdfwef",
@@ -24,9 +24,12 @@ module.exports = function (app, environment) {
     }
 
     app.use(session(sessionOptions));
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     // Login, Register and password protected endpoints.
     app.post("/api/admin/register", function (req, res) {
+        /* TODO: sanitization of inputs is needed here and in login service. */
 
         // Validate data !!!
         req.checkBody("username", "Username cannot be empty.").notEmpty();
@@ -55,6 +58,7 @@ module.exports = function (app, environment) {
     });
 
     app.post("/login", function (req, res) {
+        /* TODO: sanitization of inputs is needed here and in register service. */
 
     });
 };
@@ -103,7 +107,7 @@ function handleUserSave_factory(req, res, errors) {
                 res.send({messages: errors});
             }
         } else {
-            res.send("User added succesfully");
+            res.send({"success": "User added succesfully."});
         }
     }
 }
