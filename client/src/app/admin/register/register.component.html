@@ -12,7 +12,7 @@
   <md-input-container>
     <input mdInput #passwordMatch type="password" placeholder="Password">
   </md-input-container>
-  <button md-button (click)="register(username.value, email.value, password.value, passwordMatch.value)">Register
+  <button md-button (click)="registerUser(username.value, email.value, password.value, passwordMatch.value)">Register
   </button>
   <a routerLink="/admin/login">Already Registered?</a>
 </md-card>
