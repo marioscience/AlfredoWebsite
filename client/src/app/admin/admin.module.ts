@@ -11,6 +11,9 @@ import {AdminRoutingModule} from "./admin-routing.module";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 
+
+import {AuthService} from "../services/auth.service";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +30,9 @@ import {LoginComponent} from "./login/login.component";
   exports: [
     AdminComponent,
     AdminRoutingModule
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class AdminModule {

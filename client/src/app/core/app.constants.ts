@@ -3,5 +3,7 @@ export class ApiRootConstants {
   static music = "api/music";
   static biography = "api/biography";
   static transcription = "api/transcription";
-  static concertSchedule = "api/concertschedule"
+  static concertSchedule = "api/concertschedule";
+  static register = "api/admin/register";
+  static login = "api/admin/login";
 }

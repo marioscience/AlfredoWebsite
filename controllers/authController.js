@@ -63,6 +63,18 @@ module.exports = function (app, environment) {
     });
 };
 
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (id, done) {
+    User.findById(id, function (err, user) {
+        done(err, user);
+    });
+});
+
+//passport.use(new LocalStrategy());
+
 function hashPasswordHandler_factory(req, res, errors) {
     return function (err, passwordHash) {
         if (err) {
