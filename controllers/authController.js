@@ -2,11 +2,24 @@ var validator = require("express-validator");
 var bcrypt = require("bcrypt");
 var session = require("express-session");
 var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 
 var User = require("../models/userModel");
 
 module.exports = function (app, environment) {
     app.use(validator());
+
+    passport.serializeUser(function (user, done) {
+        done(null, user);
+    });
+
+    passport.deserializeUser(function (id, done) {
+        User.findById(id, function (err, user) {
+            done(err, user);
+        });
+    });
+
+    //passport.use(new LocalStrategy());
 
     var saltRounds = 10;
     /* TODO: Save secret somewhere safe (hint: environment variable) */
@@ -45,14 +58,18 @@ module.exports = function (app, environment) {
         // Check if user exists !!!
 
         // Set first user as admin !!!
-        var errors = [];
+        res.authStatus = {
+            success: true,
+            errorMessages: []
+        };
 
         req.getValidationResult().then(function (result) {
             if (!result.isEmpty()) {
-                errors = result.array();
-                res.send(errors);
+                res.authStatus.success = false;
+                res.authStatus.errorMessages = result.array();
+                res.send(res.authStatus);
             } else {
-                bcrypt.hash(req.body.password, saltRounds, hashPasswordHandler_factory(req, res, errors));
+                bcrypt.hash(req.body.password, saltRounds, hashPasswordHandler_factory(req, res));
             }
         });
     });
@@ -63,33 +80,22 @@ module.exports = function (app, environment) {
     });
 };
 
-passport.serializeUser(function (user, done) {
-    done(null, user);
-});
-
-passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
-        done(err, user);
-    });
-});
-
-//passport.use(new LocalStrategy());
-
-function hashPasswordHandler_factory(req, res, errors) {
+function hashPasswordHandler_factory(req, res) {
     return function (err, passwordHash) {
         if (err) {
-            errors.push("Error hashing password");
+            res.authStatus.success = false;
+            res.authStatus.errorMessages.push("Error hashing password");
             throw err;
         }
 
-        User.find({}, insertUser_factory(req, res, errors, passwordHash));
+        User.find({}, insertUser_factory(req, res, passwordHash));
     }
 }
 
-function insertUser_factory(req, res, errors, passwordHash) {
+function insertUser_factory(req, res, passwordHash) {
     return function (err, users) {
         if (err) {
-            errors.push("Error in database. User find failed.");
+            res.authStatus.errorMessages.push("Error in database. User find failed.");
             throw err;
         }
 
@@ -102,24 +108,27 @@ function insertUser_factory(req, res, errors, passwordHash) {
             isAdmin: isAdmin
         });
 
-        newUser.save(handleUserSave_factory(req, res, errors));
+        newUser.save(handleUserSave_factory(req, res));
     }
 }
 
-function handleUserSave_factory(req, res, errors) {
+function handleUserSave_factory(req, res) {
     return function (error) {
         if (error) {
             if (error.code === 11000) {
                 if (error.errmsg.includes("username")) {
-                    errors.push("Username is already registered.");
+                    res.authStatus.success = false;
+                    res.authStatus.errorMessages.push("Username is already registered.");
                 }
                 if (error.errmsg.includes("email")) {
-                    errors.push("Email is already registered.");
+                    res.authStatus.success = false;
+                    res.authStatus.errorMessages.push("Email is already registered.");
                 }
-                res.send({messages: errors});
+                res.send(res.authStatus);
             }
         } else {
-            res.send({"success": "User added succesfully."});
+            res.authStatus.success = true;
+            res.send(res.authStatus);
         }
     }
 }
