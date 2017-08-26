@@ -19,7 +19,35 @@ module.exports = function (app, environment) {
         });
     });
 
-    //passport.use(new LocalStrategy());
+    passport.use(new LocalStrategy(
+        function (username, password, done) {
+            User.findOne({username: username}, function (err, user) {
+                if (err) {
+                    return done(err)
+                }
+
+                if (!user) {
+                    return done(null, false, {message: "Incorrect username."});
+                }
+
+                if (!user.isAdmin) {
+                    return done(null, false, {message: "User not authorised by admin."})
+                }
+
+                bcrypt.compare(password, user.password, function (err, res) {
+                    if (err) {
+                        return done(err)
+                    }
+
+                    if (res) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false, {message: "Incorrect password."});
+                    }
+                });
+            })
+        }
+    ));
 
     var saltRounds = 10;
     /* TODO: Save secret somewhere safe (hint: environment variable) */
@@ -52,7 +80,7 @@ module.exports = function (app, environment) {
         req.checkBody("email", "Email is too short.").len(7);
 
         req.checkBody("password", "Password doesn't meet minimum requirements.").matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "i");
-        req.checkBody("passwordMatch", "Passwords must match").equals(req.body.password);
+        req.checkBody("passwordMatch", "Passwords must match.").equals(req.body.password);
 
         // Sanitize
         // Check if user exists !!!
@@ -74,9 +102,40 @@ module.exports = function (app, environment) {
         });
     });
 
-    app.post("/login", function (req, res) {
-        /* TODO: sanitization of inputs is needed here and in register service. */
+    app.post("/api/admin/login", function (req, res, next) {
+        req.checkBody("username", "Username cannot be empty.").notEmpty();
+        req.checkBody("username", "Username is too short.").len(4);
 
+        req.checkBody("password", "Password field empty.").isEmpty();
+
+        res.loginStatus = {
+            success: false,
+            errorMessages: []
+        };
+
+        passport.authenticate("local", function (err, user, info) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                res.loginStatus.success = false;
+                res.loginStatus.errorMessages.push("User not found.");
+                return res.send(info);
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                res.loginStatus.success = true;
+                return res.send("User logged in.");
+            });
+        })(req, res, next);
+
+    });
+
+    app.get("/api/admin/logout", function (req, res) {
+        req.logout();
+        res.send("User logged out.");
     });
 };
 
@@ -84,7 +143,7 @@ function hashPasswordHandler_factory(req, res) {
     return function (err, passwordHash) {
         if (err) {
             res.authStatus.success = false;
-            res.authStatus.errorMessages.push("Error hashing password");
+            res.authStatus.errorMessages.push("Error hashing password.");
             throw err;
         }
 
