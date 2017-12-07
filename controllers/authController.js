@@ -27,11 +27,11 @@ module.exports = function (app, environment) {
                 }
 
                 if (!user) {
-                    return done(null, false, {message: "Incorrect username."});
+                    return done(null, false, {errorMessages: ["Incorrect username."]});
                 }
 
                 if (!user.isAdmin) {
-                    return done(null, false, {message: "User not authorised by admin."})
+                    return done(null, false, {errorMessages: ["User not authorised by admin."]})
                 }
 
                 bcrypt.compare(password, user.password, function (err, res) {
@@ -42,7 +42,7 @@ module.exports = function (app, environment) {
                     if (res) {
                         return done(null, user);
                     } else {
-                        return done(null, false, {message: "Incorrect password."});
+                        return done(null, false, {errorMessages: ["Incorrect password."]});
                     }
                 });
             })
