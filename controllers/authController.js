@@ -109,6 +109,23 @@ module.exports = function (app, environment) {
         });
     });
 
+    app.get("/api/admin/users", function (req, res) {
+        User.find({}, function (err, users) {
+            users.forEach(function (user) {
+                user.password = "********";
+            });
+            res.send(users);
+        });
+    });
+
+    app.post("/api/admin/authorize", function (req, res) {
+        User.findById(req.body.userId, function (err, user) {
+            user.isAdmin = req.session.passport.user.isAdmin;
+            user.save();
+            res.send("User authorized successfully");
+        });
+    });
+
     /**** Helper Functions for Registration ****/
 
     function hashPasswordHandler_factory(req, res) {
