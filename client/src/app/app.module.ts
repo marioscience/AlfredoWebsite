@@ -28,7 +28,7 @@ import {TranscriptionService} from "./services/transcription.service";
     HomeModule,
     AdminModule,
     ConcertsModule,
-    AppRoutingModule, // Create separated route modules for each feature module?
+    AppRoutingModule,
     HttpModule// <- state your purpose!
   ],
   providers: [
