@@ -3,10 +3,14 @@ var bcrypt = require("bcrypt");
 var session = require("express-session");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var sessionStore = require("connect-mongo")(session);
+var mongoose = require("mongoose");
 
 var User = require("../models/userModel");
 
 module.exports = function (app, environment) {
+
+    /**** Passport Configuration ****/
     app.use(validator());
 
     passport.serializeUser(function (user, done) {
@@ -53,6 +57,8 @@ module.exports = function (app, environment) {
     /* TODO: Save secret somewhere safe (hint: environment variable) */
     var sessionOptions = {
         secret: "laheuaobuebpowufpoIAFADsdfwef",
+        store: new sessionStore({mongooseConnection: mongoose.connection}),
+        unset: 'destroy',
         resave: true,
         saveUninitialized: false,
         cookie: {},
@@ -68,6 +74,7 @@ module.exports = function (app, environment) {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    /**** User Registration ****/
     // Login, Register and password protected endpoints.
     app.post("/api/admin/register", function (req, res) {
         /* TODO: sanitization of inputs is needed here and in login service. */
@@ -101,6 +108,63 @@ module.exports = function (app, environment) {
             }
         });
     });
+
+    /**** Helper Functions for Registration ****/
+
+    function hashPasswordHandler_factory(req, res) {
+        return function (err, passwordHash) {
+            if (err) {
+                res.authStatus.success = false;
+                res.authStatus.errorMessages.push("Error hashing password.");
+                throw err;
+            }
+
+            User.find({}, insertUser_factory(req, res, passwordHash));
+        }
+    }
+
+    function insertUser_factory(req, res, passwordHash) {
+        return function (err, users) {
+            if (err) {
+                res.authStatus.errorMessages.push("Error in database. User find failed.");
+                throw err;
+            }
+
+            var isAdmin = users.length === 0 || false;
+
+            var newUser = new User({
+                username: req.body.username,
+                email: req.body.email,
+                password: passwordHash,
+                isAdmin: isAdmin
+            });
+
+            newUser.save(handleUserSave_factory(req, res));
+        }
+    }
+
+    function handleUserSave_factory(req, res) {
+        return function (error) {
+            if (error) {
+                if (error.code === 11000) {
+                    if (error.errmsg.includes("username")) {
+                        res.authStatus.success = false;
+                        res.authStatus.errorMessages.push("Username is already registered.");
+                    }
+                    if (error.errmsg.includes("email")) {
+                        res.authStatus.success = false;
+                        res.authStatus.errorMessages.push("Email is already registered.");
+                    }
+                    res.send(res.authStatus);
+                }
+            } else {
+                res.authStatus.success = true;
+                res.send(res.authStatus);
+            }
+        }
+    }
+
+    /**** User Login and Logout ****/
 
     app.post("/api/admin/login", function (req, res, next) {
         req.checkBody("username", "Username cannot be empty.").notEmpty();
@@ -138,56 +202,3 @@ module.exports = function (app, environment) {
         res.send("User logged out.");
     });
 };
-
-function hashPasswordHandler_factory(req, res) {
-    return function (err, passwordHash) {
-        if (err) {
-            res.authStatus.success = false;
-            res.authStatus.errorMessages.push("Error hashing password.");
-            throw err;
-        }
-
-        User.find({}, insertUser_factory(req, res, passwordHash));
-    }
-}
-
-function insertUser_factory(req, res, passwordHash) {
-    return function (err, users) {
-        if (err) {
-            res.authStatus.errorMessages.push("Error in database. User find failed.");
-            throw err;
-        }
-
-        var isAdmin = users.length === 0 || false;
-
-        var newUser = new User({
-            username: req.body.username,
-            email: req.body.email,
-            password: passwordHash,
-            isAdmin: isAdmin
-        });
-
-        newUser.save(handleUserSave_factory(req, res));
-    }
-}
-
-function handleUserSave_factory(req, res) {
-    return function (error) {
-        if (error) {
-            if (error.code === 11000) {
-                if (error.errmsg.includes("username")) {
-                    res.authStatus.success = false;
-                    res.authStatus.errorMessages.push("Username is already registered.");
-                }
-                if (error.errmsg.includes("email")) {
-                    res.authStatus.success = false;
-                    res.authStatus.errorMessages.push("Email is already registered.");
-                }
-                res.send(res.authStatus);
-            }
-        } else {
-            res.authStatus.success = true;
-            res.send(res.authStatus);
-        }
-    }
-}
