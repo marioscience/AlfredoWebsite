@@ -13,6 +13,7 @@ import {LoginComponent} from "./login/login.component";
 
 
 import {AuthService} from "../services/auth.service";
+import {AuthGuard} from "./auth-guard.service";
 
 @NgModule({
   imports: [
@@ -30,9 +31,6 @@ import {AuthService} from "../services/auth.service";
   exports: [
     AdminComponent,
     AdminRoutingModule
-  ],
-  providers: [
-    AuthService
   ]
 })
 export class AdminModule {

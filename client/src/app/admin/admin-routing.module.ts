@@ -6,10 +6,14 @@ import {AdminComponent} from "./admin.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 
+import {AuthGuard} from "./auth-guard.service";
+import {AuthService} from "../services/auth.service";
+
 let routes: Routes = [
   {
     path: "admin",
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "admin/login",
@@ -27,6 +31,10 @@ let routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    AuthService,
+    AuthGuard
   ]
 })
 export class AdminRoutingModule {
