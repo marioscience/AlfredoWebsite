@@ -1,4 +1,7 @@
 <h1 class="mat-h1 section-title">Register</h1>
+<div class="messages">
+  <p *ngFor="let message of messages">- {{message}}</p>
+</div>
 <md-card fxLayout="column" class="section-container register-section">
   <md-input-container>
     <input mdInput #username type="text" placeholder="Username">

@@ -10,6 +10,9 @@ export class RegisterComponent {
   constructor(private authService: AuthService) {
   }
 
+
+  messages: Array<string> = [];
+
   registerUser(username, email, password, passwordMatch): void {
     this.authService.register(username, email, password, passwordMatch);
   }
