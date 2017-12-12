@@ -1,4 +1,5 @@
 var Transcription = require("../models/transcriptionModel");
+var authMiddleware = require("../middleware/userAuthMiddleware")();
 
 module.exports = function(app) {
     app.get("/api/transcription", function(req, res) {
@@ -8,7 +9,7 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/transcription/description", function(req, res) {
+    app.put("/api/transcription/description", authMiddleware, function (req, res) {
         Transcription.findOneAndUpdate({}, {
             $set: { description: req.body.description }
         }, function(err) {
@@ -17,7 +18,7 @@ module.exports = function(app) {
         })
     });
 
-    app.post("/api/transcription", function(req, res) {
+    app.post("/api/transcription", authMiddleware, function (req, res) {
         Transcription.findOne({}, function(err, transcription) {
             transcription.transcriptions.push({
                 title: req.body.title,
@@ -34,7 +35,7 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/transcription", function(req, res) {
+    app.put("/api/transcription", authMiddleware, function (req, res) {
         Transcription.findOneAndUpdate({ "transcriptions._id": req.body.id }, {
             "transcriptions.$.title": req.body.title,
             "transcriptions.$.videoUrl": req.body.videoUrl,
@@ -46,7 +47,7 @@ module.exports = function(app) {
         });
     });
 
-    app.delete("/api/transcription", function(req, res) {
+    app.delete("/api/transcription", authMiddleware, function (req, res) {
         Transcription.findOneAndUpdate({}, {
             $pull: { "transcriptions": { "_id": req.body.id }}
         }, function(err) {

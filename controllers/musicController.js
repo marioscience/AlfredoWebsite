@@ -1,4 +1,5 @@
 var Music = require("../models/musicModel");
+var authMiddleware = require("../middleware/userAuthMiddleware")();
 
 module.exports = function(app) {
     app.get("/api/music/playlist", function(req, res) {
@@ -14,7 +15,7 @@ module.exports = function(app) {
     });
 
     // This request will receive a file later too
-    app.put("/api/music/video", function(req, res) {
+    app.put("/api/music/video", authMiddleware, function (req, res) {
         Music.findByIdAndUpdate(req.body.id, {
             $set: { videoUrl: req.body.videoUrl }
         }, function(err) {
@@ -24,7 +25,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/api/music/song", function(req, res) {
+    app.post("/api/music/song", authMiddleware, function (req, res) {
         Music.findOne({}, function(err, music) {
             music.musicPlaylist.push({
                 songName: req.body.songName,
@@ -40,7 +41,7 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/music/song", function(req, res) {
+    app.put("/api/music/song", authMiddleware, function (req, res) {
         Music.findOneAndUpdate({ "musicPlaylist._id": req.body.id }, {
             "musicPlaylist.$.songName": req.body.songName,
             "musicPlaylist.$.artist": req.body.artist,
@@ -52,7 +53,7 @@ module.exports = function(app) {
     });
 
     //Issue warning because it deletes children items
-    app.delete("/api/music/song", function(req, res) {
+    app.delete("/api/music/song", authMiddleware, function (req, res) {
         Music.findOneAndUpdate({}, {
             $pull: {
                 "musicPlaylist": { "_id": req.body.id }

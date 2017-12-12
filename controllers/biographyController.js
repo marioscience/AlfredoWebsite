@@ -1,4 +1,5 @@
 var Biography = require("../models/biographyModel");
+var authMiddleware = require("../middleware/userAuthMiddleware")();
 
 module.exports = function(app) {
     app.get("/api/biography", function(req, res) {
@@ -8,7 +9,7 @@ module.exports = function(app) {
         })
     });
 
-    app.put("/api/biography", function(req, res) {
+    app.put("/api/biography", authMiddleware, function (req, res) {
         Biography.findOneAndUpdate({}, {
             $set: {
                 biographyText: req.body.biographyText,
@@ -20,7 +21,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/api/gear/type", function(req, res) {
+    app.post("/api/gear/type", authMiddleware, function (req, res) {
         Biography.findOne({}, function(err, biography) {
             biography.gear.push({
                 gearType: req.body.gearType,
@@ -36,7 +37,7 @@ module.exports = function(app) {
     });
 
     // Adds a gear item under a specified gearType
-    app.post("/api/gear", function(req, res) {
+    app.post("/api/gear", authMiddleware, function (req, res) {
         Biography.findOneAndUpdate({ "gear.gearType": req.body.gearType }, {
             $push: {
                 "gear.$.items": { "name": req.body.gearName }
@@ -47,7 +48,7 @@ module.exports = function(app) {
         });
     });
 
-    app.put("/api/gear/type", function(req, res) {
+    app.put("/api/gear/type", authMiddleware, function (req, res) {
         Biography.findOneAndUpdate({ "gear._id": req.body.id }, {
             $set: {
                 "gear.$.gearType": req.body.gearType
@@ -59,7 +60,7 @@ module.exports = function(app) {
     });
 
     /*Broken for now :( */
-    app.put("/api/gear", function(req, res) {
+    app.put("/api/gear", authMiddleware, function (req, res) {
         Biography.findOne({ "gear.items._id": req.body.id }, function(err, biography) {
             if(err) throw err;
 
@@ -84,7 +85,7 @@ module.exports = function(app) {
     });/**/
 
     // Issue warning because it deletes children items :D
-    app.delete("/api/gear/type", function(req, res) {
+    app.delete("/api/gear/type", authMiddleware, function (req, res) {
         Biography.findOneAndUpdate({}, {
             $pull: {
                 "gear" : { "_id": req.body.id }
@@ -95,7 +96,7 @@ module.exports = function(app) {
         });
     });
 
-    app.delete("/api/gear", function(req, res) {
+    app.delete("/api/gear", authMiddleware, function (req, res) {
         Biography.findOneAndUpdate({ "gear.items._id": req.body.id }, {
             $pull: {
                 "gear.$.items": { "_id": req.body.id }

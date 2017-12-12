@@ -1,6 +1,7 @@
 /* This controller is to add seed data to the database and any other init required for development. */
 /* It is restricted to run only on the dev environment */
 var mongoose = require("mongoose");
+var authMiddleware = require("../middleware/userAuthMiddleware")();
 
 var Introduction = require("../models/introductionModel");
 var Music = require("../models/musicModel");
@@ -153,7 +154,7 @@ module.exports = function(app) {
         console.log(result);
     };
 
-    app.get("/api/appSetup", function(req, res) {
+    app.get("/api/appSetup", authMiddleware, function (req, res) {
         /* Remove old data. In the future require login for this path. and make sure an appropriate WARNING is given
         that data is about to be wiped clean */
         //console.log(process.env);

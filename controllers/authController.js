@@ -8,6 +8,8 @@ var mongoose = require("mongoose");
 
 var User = require("../models/userModel");
 
+var authMiddleware = require("../middleware/userAuthMiddleware")();
+
 module.exports = function (app, environment) {
 
     /**** Passport Configuration ****/
@@ -109,7 +111,7 @@ module.exports = function (app, environment) {
         });
     });
 
-    app.get("/api/admin/users", function (req, res) {
+    app.get("/api/admin/users", authMiddleware, function (req, res) {
         User.find({}, function (err, users) {
             users.forEach(function (user) {
                 user.password = "********";
@@ -118,7 +120,7 @@ module.exports = function (app, environment) {
         });
     });
 
-    app.post("/api/admin/authorize", function (req, res) {
+    app.post("/api/admin/authorize", authMiddleware, function (req, res) {
         User.findById(req.body.userId, function (err, user) {
             user.isAdmin = req.session.passport.user.isAdmin;
             user.save();
@@ -214,7 +216,7 @@ module.exports = function (app, environment) {
 
     });
 
-    app.get("/api/admin/logout", function (req, res) {
+    app.get("/api/admin/logout", authMiddleware, function (req, res) {
         req.logout();
         res.send("User logged out.");
     });
