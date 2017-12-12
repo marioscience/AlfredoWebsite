@@ -43,7 +43,7 @@ export class SectionScrollDirective implements OnInit, OnDestroy {
         .subscribe(elementId => {
           if (elementId === this.scrollTarget) {
             $('html, body').animate({
-              scrollTop: this.elem.nativeElement.offsetTop - navbar.height() + 1
+              scrollTop: this.elem.nativeElement.offsetTop + 1
             }, 500);
 
             /* This is a no no in angular, but at least it replaces jQuery, which is another no no. They still don't say
