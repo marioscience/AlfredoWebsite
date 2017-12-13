@@ -37,7 +37,7 @@ export class AuthService {
       .map(response => {
         let loginResult = JSON.parse(response["_body"]);
         this.isLoggedIn = loginResult.success;
-        return loginResult
+        return loginResult;
       });
 
     return responseObservable;
