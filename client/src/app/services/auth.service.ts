@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {ApiRootConstants} from "../core/app.constants";
 import {Observable} from "rxjs/Observable";
-import {ResponseModel} from "../models/response.model";
+import {AuthResponse} from "../models/auth-response.model";
 import "rxjs/add/operator/toPromise";
 
 // Temporary imports for testing:
@@ -17,7 +17,7 @@ export class AuthService {
 
   isLoggedIn = false;
 
-  register(username, email, password, passwordMatch): void {
+  register(username, email, password, passwordMatch): Observable<AuthResponse> {
     let body = {
       username: username,
       email: email,
@@ -25,27 +25,27 @@ export class AuthService {
       passwordMatch: passwordMatch
     };
 
-    this.http.post(ApiRootConstants.register, body)
-      .toPromise()
-      .then((errors) => {
-        console.log(errors)
+    return this.http.post(ApiRootConstants.register, body)
+      .map(response => {
+        let responseJSON = JSON.parse(response["_body"]);
+        let responseObj = new AuthResponse(responseJSON.success, responseJSON.errorMessages);
+        return responseObj;
       });
   }
 
-  authenticate(): Observable<ResponseModel> {
+  authenticate(): Observable<AuthResponse> {
     let responseObservable = this.http.post(ApiRootConstants.authenticate, {})
       .map(response => {
         let loginResult = JSON.parse(response["_body"]);
         this.isLoggedIn = loginResult.success;
-        return loginResult;
+        let loginResultObj = new AuthResponse(loginResult.success, loginResult.errorMessages);
+        return loginResultObj;
       });
 
     return responseObservable;
   }
 
-  login(username, password): Observable<any> {
-    //return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
-
+  login(username, password): Observable<AuthResponse> {
     let body = {
       username: username,
       password: password
@@ -53,8 +53,11 @@ export class AuthService {
 
     return this.http.post(ApiRootConstants.login, body)
       .map(response => {
+        let loginResult = JSON.parse(response["_body"]);
+        let loginResultObj = new AuthResponse(loginResult.success, loginResult.errorMessages);
         this.isLoggedIn = JSON.parse(response["_body"]).success;
-        return JSON.parse(response["_body"]).errorMessages;
+
+        return loginResultObj;
       });
   }
 

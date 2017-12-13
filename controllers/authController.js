@@ -188,30 +188,38 @@ module.exports = function (app, environment) {
     app.post("/api/admin/login", function (req, res, next) {
         req.checkBody("username", "Username cannot be empty.").notEmpty();
         req.checkBody("username", "Username is too short.").len(4);
-        req.checkBody("password", "Password field empty.").isEmpty();
+        req.checkBody("password", "Password field empty.").notEmpty();
 
         res.loginStatus = {
             success: false,
             errorMessages: []
         };
 
-        passport.authenticate("local", function (err, user, info) {
-            if (err) {
-                return next(err);
-            }
-            if (!user) {
+        req.getValidationResult().then(function (result) {
+            if (!result.isEmpty()) {
                 res.loginStatus.success = false;
-                res.loginStatus.errorMessages = res.loginStatus.errorMessages.concat(info["errorMessages"]);
-                return res.send(res.loginStatus);
+                res.loginStatus.errorMessages = result.array();
+                res.send(res.loginStatus);
+            } else {
+                passport.authenticate("local", function (err, user, info) {
+                    if (err) {
+                        return next(err);
+                    }
+                    if (!user) {
+                        res.loginStatus.success = false;
+                        res.loginStatus.errorMessages = res.loginStatus.errorMessages.concat(info["errorMessages"]);
+                        return res.send(res.loginStatus);
+                    }
+                    req.logIn(user, function (err) {
+                        if (err) {
+                            return next(err);
+                        }
+                        res.loginStatus.success = true;
+                        return res.send(res.loginStatus);
+                    });
+                })(req, res, next);
             }
-            req.logIn(user, function (err) {
-                if (err) {
-                    return next(err);
-                }
-                res.loginStatus.success = true;
-                return res.send(res.loginStatus);
-            });
-        })(req, res, next);
+        });
 
     });
 

@@ -1,8 +1,12 @@
 <h1 class="mat-h1 section-title">Register</h1>
+<div class="success-message" *ngIf="showSuccessMsg">
+  <h2>User created successfully. </h2>
+  <h4>Please have an already authorized user to authorize your account before you can login.</h4>
+</div>
 <div class="messages">
   <p *ngFor="let message of messages">- {{message}}</p>
 </div>
-<md-card fxLayout="column" class="section-container register-section">
+<md-card fxLayout="column" class="section-container register-section" *ngIf="!showSuccessMsg">
   <md-input-container>
     <input mdInput #username type="text" placeholder="Username">
   </md-input-container>

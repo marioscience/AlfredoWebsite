@@ -12,8 +12,15 @@ export class RegisterComponent {
 
 
   messages: Array<string> = [];
+  showSuccessMsg: boolean = false;
 
   registerUser(username, email, password, passwordMatch): void {
-    this.authService.register(username, email, password, passwordMatch);
+    this.messages = [];
+
+    this.authService.register(username, email, password, passwordMatch)
+      .subscribe(response => {
+        this.showSuccessMsg = response.success;
+        this.messages = response.decodeMessages();
+      });
   }
 }
