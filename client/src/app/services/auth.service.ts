@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {ApiRootConstants} from "../core/app.constants";
 import {Observable} from "rxjs/Observable";
+import {ResponseModel} from "../models/response.model";
 import "rxjs/add/operator/toPromise";
 
 // Temporary imports for testing:
@@ -29,6 +30,17 @@ export class AuthService {
       .then((errors) => {
         console.log(errors)
       });
+  }
+
+  authenticate(): Observable<ResponseModel> {
+    let responseObservable = this.http.post(ApiRootConstants.authenticate, {})
+      .map(response => {
+        let loginResult = JSON.parse(response["_body"]);
+        this.isLoggedIn = loginResult.success;
+        return loginResult
+      });
+
+    return responseObservable;
   }
 
   login(username, password): Observable<any> {

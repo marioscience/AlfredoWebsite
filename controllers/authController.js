@@ -225,4 +225,9 @@ module.exports = function (app, environment) {
 
         res.send(res.logoutStatus);
     });
+
+    // Call this API endpoint just to check if user is authorized.
+    app.post("/api/admin/authenticate", authMiddleware, function (req, res) {
+        res.send(res.statusMessage);
+    });
 };

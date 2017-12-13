@@ -7,4 +7,5 @@ export class ApiRootConstants {
   static register = "api/admin/register";
   static login = "api/admin/login";
   static logout = "api/admin/logout";
+  static authenticate = "api/admin/authenticate";
 }

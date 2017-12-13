@@ -8,6 +8,7 @@ module.exports = function () {
 
             return next();
         } else {
+// Thou shalt not fucking pass..
             res.send({
                 success: false,
                 errorMessages: ["User not logged in."]
