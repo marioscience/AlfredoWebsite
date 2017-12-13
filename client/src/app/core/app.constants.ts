@@ -6,4 +6,5 @@ export class ApiRootConstants {
   static concertSchedule = "api/concertschedule";
   static register = "api/admin/register";
   static login = "api/admin/login";
+  static logout = "api/admin/logout";
 }

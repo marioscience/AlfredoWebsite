@@ -15,7 +15,8 @@ export class LoginComponent {
 
   login(username, password): void {
     console.log(username, password);
-    this.authService.login().subscribe(() => {
+    this.authService.login(username, password).subscribe((message) => {
+      this.messages = message;
       if (this.authService.isLoggedIn) {
         this.router.navigate(["/admin"]);
       }

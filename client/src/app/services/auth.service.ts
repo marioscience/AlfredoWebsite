@@ -31,11 +31,27 @@ export class AuthService {
       });
   }
 
-  login(): Observable<boolean> {
-    return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+  login(username, password): Observable<any> {
+    //return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+
+    let body = {
+      username: username,
+      password: password
+    };
+
+    return this.http.post(ApiRootConstants.login, body)
+      .map(response => {
+        this.isLoggedIn = JSON.parse(response["_body"]).success;
+        return JSON.parse(response["_body"]).errorMessages;
+      });
   }
 
   logout(): void {
-    this.isLoggedIn = false;
+    this.http.get(ApiRootConstants.logout)
+      .toPromise()
+      .then((errors) => {
+        console.log(errors);
+        this.isLoggedIn = false;
+      });
   }
 }

@@ -12,13 +12,10 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    console.log("AuthGuard#CanActivate called!");
     return this.checkLogin();
   }
 
   checkLogin(): boolean {
-    console.log(this.authService.isLoggedIn);
-
     if (this.authService.isLoggedIn) {
       return true;
     }

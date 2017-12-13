@@ -188,7 +188,6 @@ module.exports = function (app, environment) {
     app.post("/api/admin/login", function (req, res, next) {
         req.checkBody("username", "Username cannot be empty.").notEmpty();
         req.checkBody("username", "Username is too short.").len(4);
-
         req.checkBody("password", "Password field empty.").isEmpty();
 
         res.loginStatus = {
@@ -202,15 +201,15 @@ module.exports = function (app, environment) {
             }
             if (!user) {
                 res.loginStatus.success = false;
-                res.loginStatus.errorMessages.push("User not found.");
-                return res.send(info);
+                res.loginStatus.errorMessages = res.loginStatus.errorMessages.concat(info["errorMessages"]);
+                return res.send(res.loginStatus);
             }
             req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
                 }
                 res.loginStatus.success = true;
-                return res.send("User logged in.");
+                return res.send(res.loginStatus);
             });
         })(req, res, next);
 
@@ -218,6 +217,12 @@ module.exports = function (app, environment) {
 
     app.get("/api/admin/logout", authMiddleware, function (req, res) {
         req.logout();
-        res.send("User logged out.");
+
+        res.logoutStatus = {
+            success: true,
+            errorMessages: []
+        };
+
+        res.send(res.logoutStatus);
     });
 };
