@@ -28,21 +28,17 @@ export class AuthService {
     return this.http.post(ApiRootConstants.register, body)
       .map(response => {
         let responseJSON = JSON.parse(response["_body"]);
-        let responseObj = new AuthResponse(responseJSON.success, responseJSON.errorMessages);
-        return responseObj;
+        return new AuthResponse(responseJSON.success, responseJSON.errorMessages);
       });
   }
 
   authenticate(): Observable<AuthResponse> {
-    let responseObservable = this.http.post(ApiRootConstants.authenticate, {})
+    return this.http.post(ApiRootConstants.authenticate, {})
       .map(response => {
         let loginResult = JSON.parse(response["_body"]);
         this.isLoggedIn = loginResult.success;
-        let loginResultObj = new AuthResponse(loginResult.success, loginResult.errorMessages);
-        return loginResultObj;
+        return new AuthResponse(loginResult.success, loginResult.errorMessages);
       });
-
-    return responseObservable;
   }
 
   login(username, password): Observable<AuthResponse> {
@@ -65,7 +61,9 @@ export class AuthService {
     this.http.get(ApiRootConstants.logout)
       .toPromise()
       .then((errors) => {
-        console.log(errors);
+        if (errors) {
+          console.log(errors);
+        }
         this.isLoggedIn = false;
       });
   }
