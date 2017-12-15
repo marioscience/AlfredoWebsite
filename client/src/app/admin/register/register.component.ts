@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, AfterViewInit, ViewChildren} from "@angular/core";
 import {AuthService} from "../../services/auth.service";
 
 @Component({
@@ -6,10 +6,15 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: "./register.component.html",
   styleUrls: ["./register.component.scss"]
 })
-export class RegisterComponent {
+export class RegisterComponent implements AfterViewInit {
   constructor(private authService: AuthService) {
   }
 
+  @ViewChildren("username") usernameInput;
+
+  ngAfterViewInit() {
+    this.usernameInput.first.nativeElement.focus();
+  }
 
   messages: Array<string> = [];
   showSuccessMsg: boolean = false;

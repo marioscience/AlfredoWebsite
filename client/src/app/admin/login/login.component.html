@@ -4,7 +4,8 @@
 </div>
 <md-card fxLayout="column" class="section-container login-section">
   <md-input-container>
-    <input mdInput #username type="text" placeholder="Username" (keyup.enter)="login(username.value, password.value)">
+    <input mdInput #username type="text" placeholder="Username"
+           (keyup.enter)="login(username.value, password.value)">
   </md-input-container>
   <md-input-container>
     <input mdInput #password type="password" placeholder="Password"
