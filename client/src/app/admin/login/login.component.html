@@ -4,10 +4,11 @@
 </div>
 <md-card fxLayout="column" class="section-container login-section">
   <md-input-container>
-    <input mdInput #username type="text" placeholder="Username">
+    <input mdInput #username type="text" placeholder="Username" (keyup.enter)="login(username.value, password.value)">
   </md-input-container>
   <md-input-container>
-    <input mdInput #password type="password" placeholder="Password">
+    <input mdInput #password type="password" placeholder="Password"
+           (keyup.enter)="login(username.value, password.value)">
   </md-input-container>
   <button md-button (click)="login(username.value, password.value)">Login</button>
   <a routerLink="/admin/register">Register here</a>
