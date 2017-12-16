@@ -1,17 +1,22 @@
-<div class="admin-section">
-  <button md-button (click)="logout()">Logout</button>
-  <h1>Admin</h1>
-  <p class="mat-body">You are now in admin territory</p>
+<md-sidenav-container>
+  <div class="admin-section">
+    <div class="admin-header" fxLayout="row">
+      <h1 class="mat-h1 section-title" fxFlex="66" fxFlexOffset="15">Admin</h1>
+      <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+        <button md-button (click)="logout()" class="logout-button">Logout</button>
+      </div>
+    </div>
 
-  <h2>Working on Login/Register workflows</h2>
-  <h1>You can only see this page when LOGGED IN. Otherwise there's something wrong. </h1>
-
-  <table>
-    <th>
-      Current User:
-    </th>
-    <td>
-      User Goes Here
-    </td>
-  </table>
-</div>
+    <md-tab-group>
+      <md-tab label="Content">
+        <introduction-edit></introduction-edit>
+        <music-edit></music-edit>
+        <transcription-edit></transcription-edit>
+        <biography-edit></biography-edit>
+      </md-tab>
+      <md-tab label="User Management">
+        <p>Users Go Here</p>
+      </md-tab>
+    </md-tab-group>
+  </div>
+</md-sidenav-container>

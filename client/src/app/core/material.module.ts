@@ -14,6 +14,7 @@ import {
   MdSidenavModule,
   MdButtonModule,
   MdToolbarModule,
+  MdTabsModule,
   MdCardModule,
   MdSliderModule,
   MdListModule,
@@ -27,6 +28,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 @NgModule({
   imports: [
     CommonModule,
+    MdTabsModule,
     BrowserAnimationsModule,
     MdInputModule,
     MdIconModule,
@@ -48,6 +50,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MdButtonModule,
     MdSidenavModule,
     MdToolbarModule,
+    MdTabsModule,
     MdCardModule,
     MdSliderModule,
     MdProgressBarModule,

@@ -6,14 +6,15 @@ import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
+import {IntroductionEditComponent} from "./introduction/introduction-edit.component";
+import {MusicEditComponent} from "./music/music-edit.component";
+import {TranscriptionEditComponent} from "./transcription/transcription-edit.component";
+import {BiographyEditComponent} from "./biography/biography-edit.component";
+
 import {AdminRoutingModule} from "./admin-routing.module";
 
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
-
-
-import {AuthService} from "../services/auth.service";
-import {AuthGuard} from "./auth-guard.service";
 
 @NgModule({
   imports: [
@@ -26,7 +27,12 @@ import {AuthGuard} from "./auth-guard.service";
   declarations: [
     AdminComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    IntroductionEditComponent,
+    MusicEditComponent,
+    TranscriptionEditComponent,
+    BiographyEditComponent
+
   ],
   exports: [
     AdminComponent,

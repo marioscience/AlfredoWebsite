@@ -1,9 +1,12 @@
 import {Component} from "@angular/core";
 
 @Component({
-  selector: "music-section",
-  template: `<h1> This is the music. put something here come on man</h1>`
+  selector: "music-edit",
+  template: `
+    <h1>Music</h1>
+    <p> This is the music. put something here come on man.</p>
+  `
 })
-export class MusicComponent {
+export class MusicEditComponent {
 
 }

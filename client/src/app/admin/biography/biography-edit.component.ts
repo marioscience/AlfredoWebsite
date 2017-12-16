@@ -1,8 +1,11 @@
 import {Component} from "@angular/core";
 
 @Component({
-  selector: "biography-edit-section",
-  template: `<h1> This is the biography edit. put something here come on man</h1>`
+  selector: "biography-edit",
+  template: `
+    <h1>Biography</h1>
+    <p>This is the biography edit. put something here come on man.</p>
+  `
 })
 export class BiographyEditComponent {
 
