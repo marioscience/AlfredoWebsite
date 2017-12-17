@@ -19,6 +19,6 @@ export class MusicService {
     return this.http.get(apiUrls.music)
       .toPromise()
       .then(response => response as Music)
-      .catch(this.logger.handleError)
+      .catch(this.logger.handleError);
   }
 }

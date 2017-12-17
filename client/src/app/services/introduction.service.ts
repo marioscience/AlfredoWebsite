@@ -21,7 +21,7 @@ export class IntroductionService {
     return this.http.get(apiUrls.introduction)
       .toPromise()
       .then(response => response as Introduction)
-      .catch(this.logger.handleError)
+      .catch(this.logger.handleError);
   }
 
 }

@@ -14,9 +14,9 @@ export class BiographyService {
   }
 
   getBiography(): Promise<any> {
-    return this.http.get(apiUrls.biography)
+    return this.http.get<Biography>(apiUrls.biography)
       .toPromise()
       .then(response => response as Biography)
-      .catch(this.logger.handleError)
+      .catch(this.logger.handleError);
   }
 }

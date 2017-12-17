@@ -18,6 +18,6 @@ export class TranscriptionService {
     return this.http.get(apiUrls.transcription)
       .toPromise()
       .then(response => response[0] as Transcription) // TODO: Find out why that one needs an index
-      .catch(this.logger.handleError)
+      .catch(this.logger.handleError);
   }
 }
