@@ -1,4 +1,4 @@
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 
 import "rxjs/add/operator/toPromise";
@@ -11,7 +11,7 @@ import {ApiRootConstants as apiUrls} from "../core/app.constants";
 
 @Injectable()
 export class IntroductionService {
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private logger: LoggerService) {
   }
 

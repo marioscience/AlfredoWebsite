@@ -1,18 +1,14 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 import {ApiRootConstants} from "../core/app.constants";
 import {Observable} from "rxjs/Observable";
 import {AuthResponse} from "../models/auth-response.model";
+import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
-
-// Temporary imports for testing:
-import "rxjs/add/observable/of";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/delay";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   isLoggedIn = false;

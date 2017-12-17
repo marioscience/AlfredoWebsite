@@ -7,17 +7,18 @@
 
   </video>
   <div class="playback-controls" fxLayout>
-    <button md-button (click)="playPause()" fxFlex="5%" *ngIf="isPaused">
-      <md-icon>play_arrow</md-icon>
+    <button mat-button (click)="playPause()" fxFlex="5%" *ngIf="isPaused">
+      <mat-icon>play_arrow</mat-icon>
     </button>
-    <button md-button (click)="playPause()" fxFlex="5%" *ngIf="!isPaused">
-      <md-icon>pause</md-icon>
+    <button mat-button (click)="playPause()" fxFlex="5%" *ngIf="!isPaused">
+      <mat-icon>pause</mat-icon>
     </button>
-    <md-slider min="0" max="1" step="0.1" [(ngModel)]="volume" (input)="updateVolume($event)" fxFlex="13%"></md-slider>
+    <mat-slider min="0" max="1" step="0.1" [(ngModel)]="volume" (input)="updateVolume($event)"
+                fxFlex="13%"></mat-slider>
     <div fxFlex="2%"></div>
-    <md-progress-bar [value]="progressPercent" fxFlex="70%"></md-progress-bar>
-    <button md-button (click)="toggleFullscreen()" *ngIf="isFullscreenEnabled" fxFlex="5%">
-      <md-icon>fullscreen</md-icon>
+    <mat-progress-bar [value]="progressPercent" fxFlex="70%"></mat-progress-bar>
+    <button mat-button (click)="toggleFullscreen()" *ngIf="isFullscreenEnabled" fxFlex="5%">
+      <mat-icon>fullscreen</mat-icon>
     </button>
   </div>
 </div>

@@ -9,17 +9,17 @@ import {CommonModule} from "@angular/common";
 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MdInputModule,
-  MdIconModule,
-  MdSidenavModule,
-  MdButtonModule,
-  MdToolbarModule,
-  MdTabsModule,
-  MdCardModule,
-  MdSliderModule,
-  MdListModule,
-  MdMenuModule,
-  MdProgressBarModule
+  MatInputModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatTabsModule,
+  MatCardModule,
+  MatSliderModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressBarModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
@@ -28,34 +28,34 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 @NgModule({
   imports: [
     CommonModule,
-    MdTabsModule,
+    MatTabsModule,
     BrowserAnimationsModule,
-    MdInputModule,
-    MdIconModule,
-    MdButtonModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdSliderModule,
-    MdProgressBarModule,
-    MdListModule,
-    MdMenuModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSliderModule,
+    MatProgressBarModule,
+    MatListModule,
+    MatMenuModule,
     FlexLayoutModule
   ],
   exports: [
     CommonModule,
     BrowserAnimationsModule,
-    MdInputModule,
-    MdIconModule,
-    MdButtonModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdTabsModule,
-    MdCardModule,
-    MdSliderModule,
-    MdProgressBarModule,
-    MdListModule,
-    MdMenuModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatCardModule,
+    MatSliderModule,
+    MatProgressBarModule,
+    MatListModule,
+    MatMenuModule,
     FlexLayoutModule
   ]
 })

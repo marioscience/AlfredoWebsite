@@ -6,24 +6,24 @@
 <div class="messages">
   <p *ngFor="let message of messages">- {{message}}</p>
 </div>
-<md-card fxLayout="column" class="section-container register-section" *ngIf="!showSuccessMsg">
-  <md-input-container>
-    <input mdInput #username type="text" placeholder="Username"
+<mat-card fxLayout="column" class="section-container register-section" *ngIf="!showSuccessMsg">
+  <mat-input-container>
+    <input matInput #username type="text" placeholder="Username"
            (keyup.enter)="registerUser(username.value, email.value, password.value, passwordMatch.value)">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput #email type="email" placeholder="Email"
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput #email type="email" placeholder="Email"
            (keyup.enter)="registerUser(username.value, email.value, password.value, passwordMatch.value)">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput #password type="password" placeholder="Password"
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput #password type="password" placeholder="Password"
            (keyup.enter)="registerUser(username.value, email.value, password.value, passwordMatch.value)">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput #passwordMatch type="password" placeholder="Password"
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput #passwordMatch type="password" placeholder="Password"
            (keyup.enter)="registerUser(username.value, email.value, password.value, passwordMatch.value)">
-  </md-input-container>
-  <button md-button (click)="registerUser(username.value, email.value, password.value, passwordMatch.value)">Register
+  </mat-input-container>
+  <button mat-button (click)="registerUser(username.value, email.value, password.value, passwordMatch.value)">Register
   </button>
   <a routerLink="/admin/login">Already Registered?</a>
-</md-card>
+</mat-card>

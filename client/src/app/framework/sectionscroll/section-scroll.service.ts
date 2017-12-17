@@ -1,5 +1,6 @@
 import {Injectable, Output, EventEmitter} from "@angular/core";
 import {Observable} from "rxjs/Observable";
+import "rxjs/add/operator/filter";
 
 import {Router, NavigationEnd, NavigationStart} from "@angular/router";
 

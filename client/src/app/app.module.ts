@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpModule} from "@angular/http"; //I don't think it is really needed in here
-import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {HomeModule} from "./home/home.module";
@@ -29,7 +29,7 @@ import {TranscriptionService} from "./services/transcription.service";
     AdminModule,
     ConcertsModule,
     AppRoutingModule,
-    HttpModule// <- state your purpose!
+    HttpClientModule
   ],
   providers: [
     IntroductionService,
@@ -39,4 +39,4 @@ import {TranscriptionService} from "./services/transcription.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModu
