@@ -39,4 +39,5 @@ import {TranscriptionService} from "./services/transcription.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModu
+export class AppModule {
+}
