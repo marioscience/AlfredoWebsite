@@ -3,14 +3,14 @@
   <p *ngFor="let message of messages">- {{message}}</p>
 </div>
 <mat-card fxLayout="column" class="section-container login-section">
-  <mat-input-container>
+  <mat-form-field>
     <input matInput #username type="text" placeholder="Username"
            (keyup.enter)="login(username.value, password.value)">
-  </mat-input-container>
-  <mat-input-container>
+  </mat-form-field>
+  <mat-form-field>
     <input matInput #password type="password" placeholder="Password"
            (keyup.enter)="login(username.value, password.value)">
-  </mat-input-container>
+  </mat-form-field>
   <button mat-button (click)="login(username.value, password.value)">Login</button>
   <a routerLink="/admin/register">Register here</a>
 </mat-card>
