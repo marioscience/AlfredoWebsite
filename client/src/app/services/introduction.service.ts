@@ -17,10 +17,10 @@ export class IntroductionService {
 
   // private header = new Headers({"Content-Type": "applications/json"});
 
-  getIntroduction(): Promise<Introduction> {
+  getIntroduction(): Promise<any> {
     return this.http.get(apiUrls.introduction)
       .toPromise()
-      .then(response => response.json() as Introduction)
+      .then(response => response as Introduction)
       .catch(this.logger.handleError)
   }
 

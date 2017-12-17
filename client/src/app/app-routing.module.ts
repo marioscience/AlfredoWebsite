@@ -1,11 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-
 import {HomeComponent} from "./home/home.component";
-
-import {AdminComponent} from "./admin/admin.component";
 import {ConcertsComponent} from "./concerts/concerts.component";
-
 import {HomeResolver} from "./home/home-resolver.service";
 
 let routes: Routes = [

@@ -15,10 +15,10 @@ export class MusicService {
               private logger: LoggerService) {
   }
 
-  getMusic(): Promise<Music> {
+  getMusic(): Promise<any> {
     return this.http.get(apiUrls.music)
       .toPromise()
-      .then(response => response.json() as Music)
+      .then(response => response as Music)
       .catch(this.logger.handleError)
   }
 }

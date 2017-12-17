@@ -13,10 +13,10 @@ export class BiographyService {
               private logger: LoggerService) {
   }
 
-  getBiography(): Promise<Biography> {
+  getBiography(): Promise<any> {
     return this.http.get(apiUrls.biography)
       .toPromise()
-      .then(response => response.json() as Biography)
+      .then(response => response as Biography)
       .catch(this.logger.handleError)
   }
 }
