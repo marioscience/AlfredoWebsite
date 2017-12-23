@@ -1,16 +1,16 @@
-<md-list>
-  <md-list-item *ngIf="currentSong" class="player">
-    <md-icon md-list-icon (click)="playPrevious()">skip_previous</md-icon>
-    <md-icon md-list-icon (click)="playPauseCurrentSong()" *ngIf="!isPlaying">play_circle_outline</md-icon>
-    <md-icon md-list-icon (click)="playPauseCurrentSong()" *ngIf="isPlaying">pause_circle_outline</md-icon>
-    <md-icon md-list-icon (click)="playNext()">skip_next</md-icon>
-    <p md-line>{{ currentSong.songName }}</p>
-    <p md-line>{{ currentSong.artist }}</p>
-  </md-list-item>
-  <md-divider></md-divider>
-  <md-list-item *ngFor="let song of playList" [class.highlight]="currentSong === song" (click)="selectSong(song)">
-    <md-icon md-list-icon>playlist_play</md-icon>
-    <p md-line>{{ song.artist }}</p>
-    <p md-line>{{ song.songName }}</p>
-  </md-list-item>
-</md-list>
+<mat-list>
+  <mat-list-item *ngIf="currentSong" class="player">
+    <mat-icon mat-list-icon (click)="playPrevious()">skip_previous</mat-icon>
+    <mat-icon mat-list-icon (click)="playPauseCurrentSong()" *ngIf="!isPlaying">play_circle_outline</mat-icon>
+    <mat-icon mat-list-icon (click)="playPauseCurrentSong()" *ngIf="isPlaying">pause_circle_outline</mat-icon>
+    <mat-icon mat-list-icon (click)="playNext()">skip_next</mat-icon>
+    <p mat-line>{{ currentSong.songName }}</p>
+    <p mat-line>{{ currentSong.artist }}</p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item *ngFor="let song of playList" [class.highlight]="currentSong === song" (click)="selectSong(song)">
+    <mat-icon mat-list-icon>playlist_play</mat-icon>
+    <p mat-line>{{ song.artist }}</p>
+    <p mat-line>{{ song.songName }}</p>
+  </mat-list-item>
+</mat-list>

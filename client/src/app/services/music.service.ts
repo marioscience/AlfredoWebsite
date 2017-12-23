@@ -1,4 +1,4 @@
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 
 import "rxjs/add/operator/toPromise";
@@ -11,14 +11,14 @@ import {ApiRootConstants as apiUrls} from "../core/app.constants";
 
 @Injectable()
 export class MusicService {
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private logger: LoggerService) {
   }
 
-  getMusic(): Promise<Music> {
+  getMusic(): Promise<any> {
     return this.http.get(apiUrls.music)
       .toPromise()
-      .then(response => response.json() as Music)
-      .catch(this.logger.handleError)
+      .then(response => response as Music)
+      .catch(this.logger.handleError);
   }
 }

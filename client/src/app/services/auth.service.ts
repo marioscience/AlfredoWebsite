@@ -1,18 +1,14 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 import {ApiRootConstants} from "../core/app.constants";
 import {Observable} from "rxjs/Observable";
 import {AuthResponse} from "../models/auth-response.model";
+import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
-
-// Temporary imports for testing:
-import "rxjs/add/observable/of";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/delay";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   isLoggedIn = false;
@@ -25,19 +21,17 @@ export class AuthService {
       passwordMatch: passwordMatch
     };
 
-    return this.http.post(ApiRootConstants.register, body)
+    return this.http.post<AuthResponse>(ApiRootConstants.register, body)
       .map(response => {
-        let responseJSON = JSON.parse(response["_body"]);
-        return new AuthResponse(responseJSON.success, responseJSON.errorMessages);
+        return new AuthResponse(response.success, response.errorMessages);
       });
   }
 
   authenticate(): Observable<AuthResponse> {
-    return this.http.post(ApiRootConstants.authenticate, {})
+    return this.http.post<AuthResponse>(ApiRootConstants.authenticate, {})
       .map(response => {
-        let loginResult = JSON.parse(response["_body"]);
-        this.isLoggedIn = loginResult.success;
-        return new AuthResponse(loginResult.success, loginResult.errorMessages);
+        this.isLoggedIn = response.success;
+        return new AuthResponse(response.success, response.errorMessages);
       });
   }
 
@@ -47,22 +41,21 @@ export class AuthService {
       password: password
     };
 
-    return this.http.post(ApiRootConstants.login, body)
+    return this.http.post<AuthResponse>(ApiRootConstants.login, body)
       .map(response => {
-        let loginResult = JSON.parse(response["_body"]);
-        let loginResultObj = new AuthResponse(loginResult.success, loginResult.errorMessages);
-        this.isLoggedIn = JSON.parse(response["_body"]).success;
+        let loginResultObj = new AuthResponse(response.success, response.errorMessages);
+        this.isLoggedIn = response.success;
 
         return loginResultObj;
       });
   }
 
   logout(): void {
-    this.http.get(ApiRootConstants.logout)
+    this.http.get<AuthResponse>(ApiRootConstants.logout)
       .toPromise()
-      .then((errors) => {
-        if (errors) {
-          console.log(errors);
+      .then((response) => {
+        if (!response.success) {
+          console.log(response.errorMessages);
         }
         this.isLoggedIn = false;
       });

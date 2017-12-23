@@ -135,7 +135,7 @@ $custom-typography-secondary: mat-typography-config(
   @include mat-list-typography($config-secondary);
   @include mat-option-typography($config-secondary);
   @include mat-optgroup-typography($config-secondary);
-  @include mat-simple-snack-bar-typography($config-secondary);
+  @include mat-snack-bar-typography($config-secondary);
 }
 
 @include angular-material-typography-two-configs($custom-typography-primary, $custom-typography-secondary);

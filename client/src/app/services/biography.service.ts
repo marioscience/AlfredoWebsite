@@ -1,4 +1,4 @@
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Biography} from "../models/biography.model";
 
@@ -9,14 +9,14 @@ import {LoggerService} from "../core/logger.service";
 
 @Injectable()
 export class BiographyService {
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
               private logger: LoggerService) {
   }
 
-  getBiography(): Promise<Biography> {
-    return this.http.get(apiUrls.biography)
+  getBiography(): Promise<any> {
+    return this.http.get<Biography>(apiUrls.biography)
       .toPromise()
-      .then(response => response.json() as Biography)
-      .catch(this.logger.handleError)
+      .then(response => response as Biography)
+      .catch(this.logger.handleError);
   }
 }
