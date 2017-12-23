@@ -5,7 +5,7 @@
 <mat-card fxLayout="column" class="section-container login-section">
   <mat-form-field>
     <input matInput #username type="text" placeholder="Username"
-           (keyup.enter)="login(username.value, password.value)">
+           (keyup.enter)="login(username.value, password.value)" autofocus>
   </mat-form-field>
   <mat-form-field>
     <input matInput #password type="password" placeholder="Password"

@@ -8,7 +8,7 @@
 </div>
 <mat-card fxLayout="column" class="section-container register-section" *ngIf="!showSuccessMsg">
   <mat-input-container>
-    <input matInput #username type="text" placeholder="Username"
+    <input matInput #username type="text" placeholder="Username" autofocus
            (keyup.enter)="registerUser(username.value, email.value, password.value, passwordMatch.value)">
   </mat-input-container>
   <mat-input-container>
