@@ -19,7 +19,7 @@ import {
   MatSliderModule,
   MatListModule,
   MatMenuModule,
-  MatProgressBarModule
+  MatProgressBarModule, MatSnackBarModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
@@ -29,6 +29,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   imports: [
     CommonModule,
     MatTabsModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,
@@ -44,6 +45,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   ],
   exports: [
     CommonModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,

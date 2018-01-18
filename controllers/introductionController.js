@@ -9,17 +9,19 @@ module.exports = function(app) {
         });
     });
 
+    // First object added by initial data. When the app is running, the introduction can only be modified.
     app.put("/api/introduction", authMiddleware, function (req, res) {
 
         /* For added functionality it could check if the introduction object doesn't exist. if id doesn't then create */
-        Introduction.findByIdAndUpdate(req.body.id, {
+        Introduction.findByIdAndUpdate(req.body._id, {
             title: req.body.title,
             description: req.body.description,
             introductionPicUrl: req.body.introductionPicUrl
-        }, function(err, result) {
+            },
+            {new: true},
+            function (err, result) {
             if(err) throw err;
             res.send(result);
         });
     });
 };
-

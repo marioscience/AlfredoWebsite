@@ -27,10 +27,15 @@ Angular Material is in beta so I'm allowed to do this. yay! */
 }
 
 #transcription-section,
-#biography-section {
-  max-width: 960px; //!important; // angular/flexbox is using this in the element
+#biography-section,
+.edit-section {
+  max-width: 960px;
 }
 
 a {
   color: $white;
+}
+
+.edit-section {
+  width: 100%;
 }
