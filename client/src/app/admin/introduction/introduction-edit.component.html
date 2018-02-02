@@ -1,0 +1,21 @@
+<div class="section-container edit-section">
+  <mat-card fxFlex fxLayout="column">
+    <h1 class="mat-h1 section-title">Introduction</h1>
+    <mat-form-field>
+      <input matInput placeholder="Title" [(ngModel)]="introduction.title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Description" [(ngModel)]="introduction.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Picture Url" [(ngModel)]="introduction.introductionPicUrl">
+    </mat-form-field>
+
+    <div fxLayoutAlign="end">
+      <button mat-button (click)="cancel()">Cancel</button>
+      <button mat-button (click)="save()">Save</button>
+    </div>
+  </mat-card>
+</div>

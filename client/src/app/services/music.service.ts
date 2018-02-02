@@ -21,4 +21,11 @@ export class MusicService {
       .then(response => response as Music)
       .catch(this.logger.handleError);
   }
+
+  saveVideo(video): Promise<any> {
+    return this.http.put(apiUrls.video, {id: video._id, videoUrl: video.videoUrl})
+      .toPromise()
+      .then(response => response as Music)
+      .catch(this.logger.handleError)
+  }
 }

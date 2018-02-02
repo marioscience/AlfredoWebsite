@@ -1,0 +1,67 @@
+<div class="section-container edit-section">
+  <mat-card fxFlex fxLayout="column">
+    <h1 class="mat-h1 section-title">Music</h1>
+
+    <mat-form-field>
+      <input matInput placeholder="Video URL" [(ngModel)]="music.videoUrl">
+    </mat-form-field>
+
+    <div fxLayoutAlign="end">
+      <button mat-button (click)="cancel()">Cancel</button>
+      <button mat-button (click)="saveVideo()">Save Video</button>
+    </div>
+
+    <div>
+      <h3>Songs</h3>
+      <div *ngFor="let song of music.musicPlaylist">
+        <div *ngIf="!(editMode && songToEdit._id === song._id)">
+          <h4>{{song.songName}}</h4>
+          <p>{{song.artist}}</p>
+          <p>{{song.songUrl}}</p>
+          <button mat-mini-fab color="primary" (click)="editSong(song)">
+            <mat-icon>mode_edit</mat-icon>
+          </button>
+          <button mat-mini-fab color="primary">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div class="song-edit-form" *ngIf="editMode && songToEdit._id === song._id">
+          <mat-form-field>
+            <input matInput placeholder="Song Name" [(ngModel)]="songToEdit.songName">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Artist" [(ngModel)]="songToEdit.artist">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Song URL" [(ngModel)]="songToEdit.songUrl">
+          </mat-form-field>
+          <button mat-button (click)="cancelSongEdit()">Cancel</button>
+          <button mat-button (click)="saveEdit()">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="song-edit-form" *ngIf="addMode">
+        <mat-form-field>
+          <input matInput placeholder="Song Name" [(ngModel)]="newSong.songName">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Artist" [(ngModel)]="newSong.artist">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Song URL" [(ngModel)]="newSong.songUrl">
+        </mat-form-field>
+        <button mat-button (click)="cancelSongAdd()">Cancel</button>
+        <button mat-button>Save</button>
+      </div>
+    </div>
+
+    <div *ngIf="!addMode">
+      <button mat-fab color="primary" (click)="addNewSong()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+  </mat-card>
+</div>

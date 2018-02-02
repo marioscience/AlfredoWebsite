@@ -1,3 +1,5 @@
+/* TODO: Refactor to ServerResponse, to send messages to all APIs. Add testing for gods sakes */
+
 export class AuthResponse {
 
   private messages: string[] = [];

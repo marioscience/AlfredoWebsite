@@ -18,10 +18,12 @@ module.exports = function(app) {
     app.put("/api/music/video", authMiddleware, function (req, res) {
         Music.findByIdAndUpdate(req.body.id, {
             $set: { videoUrl: req.body.videoUrl }
-        }, function(err) {
+            },
+            {new: true}
+            , function (err, result) {
             if(err) throw err;
 
-            res.send("Video updated successfully.");
+                res.send(result);
         });
     });
 
@@ -46,9 +48,11 @@ module.exports = function(app) {
             "musicPlaylist.$.songName": req.body.songName,
             "musicPlaylist.$.artist": req.body.artist,
             "musicPlaylist.$.songUrl": req.body.songUrl
-        }, function(err) {
+            },
+            {new: true},
+            function (err, result) {
             if(err) throw err;
-            res.send("Song updated successfully.");
+                res.send(result);
         });
     });
 
