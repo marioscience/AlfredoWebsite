@@ -17,7 +17,7 @@
     "url": "https://github.com/marioscience/alfredowebsite/issues"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.17.2",
     "connect-mongo": "^2.0.0",
     "express": "^4.15.3",
